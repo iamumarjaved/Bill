@@ -1,0 +1,86 @@
+.dataTables_scrollHead
+{
+ overflow-x:hidden !important;
+ overflow-y:auto !important;
+}
+
+ .email_red {color:#bd404b;}.email_green {color:green;}.email_yellow {color:#a811a6;} 
+    .dataTable > thead > tr > th[class*="sort"]:before,
+.dataTable > thead > tr > th[class*="sort"]:after {
+    content: "" !important;
+}
+    .error{
+      color: red;
+    }
+    #product_table th,#product_table tr {white-space:nowrap !important;}
+    .error_td {border:1px solid red !important;}
+    div.dataTables_scrollBody table tbody tr{border:none !important;}
+    div.dataTables_scrollBody table tbody tr td{border-top:none !important;border-left:none !important;border-right:none !important;border-bottom:1px solid #ccc !important;
+        padding-top:3px !important;padding-bottom:0 !important;
+        
+    }
+    .dataTables_scrollBody{padding-bottom:30px !important;}
+    input.check_row {margin-right:8px;}
+     div.dataTables_scrollBody table tbody tr td input, div.dataTables_scrollBody table tbody tr td select{border:none !important;}
+     
+     .filter_input {
+    width: 96% !important;
+    margin-left:2% !important;
+}
+    .table{width:auto !important;}
+     table.dataTable>thead>tr>th:not(.sorting_disabled), table.dataTable>thead>tr>td:not(.sorting_disabled) {
+    padding-right: 1px !important;padding-left:1px !important;
+}
+ 
+  table.dataTable>thead>tr>th , table.dataTable>thead>tr>td  {
+    padding-right: 1px !important;;padding-left:1px !important;
+}
+     section.content-header{padding-top: 4px;
+    padding-bottom:3px;}
+    .sidebar a {width:200px !important;}
+    .main-sidebar {width:220px;}
+ .main-header.navbar.navbar-expand.navbar-white.navbar-light,.content-wrapper{
+   
+    margin-left: 210px !important;
+}
+.content-header {
+    padding: 15px 12px !important;
+}
+.main-header.navbar.navbar-expand.navbar-white.navbar-light{
+padding: 2px;
+    padding-left: 11px;}
+    
+    
+ .dataTables_wrapper {padding-top:10px !important;}
+.card-body {
+    -webkit-flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding-left: 5px;
+    padding-top: 4px;
+}
+  
+  .dataTables_wrapper th {font-size:15px;}
+  .dataTables_wrapper td {font-size:14px;}
+.truck_plate,.supplier,.td_driver_phone input,.td_driver select{width:90px !important;}
+
+
+#moveXmlFile2 {display:inline-block;}
+#moveXmlFile{display: inline-block;float: left;margin-right: 10px;}
+.dt-buttons {float:left;width:40%;}
+.dt-buttons button{
+        background-color: #008eff;
+    color: white;
+    border-radius: 3px;
+    border: 1px solid #008eff;
+}
+#preview_data th,#preview_data td{padding:5px !important;
+    padding-left: 4px !important;}
+    .dataTables_info {float:left;}
+    .dataTables_scrollBody {padding-bottom:10px !important;}
+/** Search field hide**/
+.dashboard .dataTables_filter,.pending .dataTables_filter {display:none !important;}
+.generate_date_xml_btn {color:grey !important;}
+
+.os-viewport-native-scrollbars-invisible {margin-bottom:40px !important;}

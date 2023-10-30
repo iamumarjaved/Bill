@@ -1,0 +1,36 @@
+version: "3.9"
+
+
+services:
+  app:
+    build:
+      context: .
+      args:
+        - DEV=true
+    ports:
+      - "80:8000"
+    volumes:
+     - ./app:/app
+    command: >
+     sh -c "python3 manage.py wait_for_db && 
+            python3 manage.py migrate &&
+            python3 manage.py runserver 0.0.0.0:8000"
+    env_file:
+      - .env
+    depends_on:
+      - redis
+  celery:
+    build: .
+    command: celery --app=app worker --loglevel=info --beat
+    volumes:
+      - ./app:/app
+      - E:/invoices:/invoices
+    depends_on:
+      - redis
+    env_file:
+      - .env
+  redis:
+    image: 'redis:alpine'
+
+volumes:
+  dev-db-data:

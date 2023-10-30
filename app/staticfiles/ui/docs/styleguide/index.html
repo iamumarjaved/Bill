@@ -1,0 +1,918 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="dark light">
+  <title>Style Guide | Clever Admin Dashboard Template</title>
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+  <!-- Styles -->
+  <link rel="stylesheet" type="text/css" href="/css/main.css">
+  <!-- Utilities -->
+  <link rel="stylesheet" type="text/css" href="/css/utilities.css">
+  <link href="https://cdn.jsdelivr.net/npm/prism-themes@1.7.0/themes/prism-coldark-dark.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-primary">
+    <!-- Sidebar -->
+    <nav class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-white border-bottom border-bottom-lg-0 border-end-lg" id="sidebar">
+      <div class="container-fluid">
+        <!-- Toggler -->
+        <button class="navbar-toggler ms-n2" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse" aria-controls="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Brand -->
+        <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0" href="/">
+          <img src="/img/logos/clever-primary.svg" alt="...">
+        </a>
+        <!-- User menu (mobile) -->
+        <div class="navbar-user d-lg-none">
+          <!-- Dropdown -->
+          <div class="dropdown">
+            <!-- Toggle -->
+            <a href="#" id="sidebarAvatar" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="avatar-parent-child">
+                <img alt="..." src="/img/people/img-profile.jpg" class="avatar avatar- rounded-circle">
+                <span class="avatar-child avatar-badge bg-success"></span>
+              </div>
+            </a>
+            <!-- Menu -->
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="sidebarAvatar">
+              <a href="#" class="dropdown-item">Profile</a>
+              <a href="#" class="dropdown-item">Settings</a>
+              <a href="#" class="dropdown-item">Billing</a>
+              <hr class="dropdown-divider">
+              <a href="#" class="dropdown-item">Logout</a>
+            </div>
+          </div>
+        </div>
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse" id="sidebarCollapse">
+          <!-- Navigation -->
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#sidebar-projects" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebar-projects">
+                <i class="bi bi-briefcase"></i> Projects
+              </a>
+              <div class="collapse" id="sidebar-projects">
+                <ul class="nav nav-sm flex-column">
+                  <li class="nav-item">
+                    <a href="/pages/projects/overview.html" class="nav-link">
+                      Overview
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/projects/grid-view.html" class="nav-link">
+                      Grid View
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/projects/table-view.html" class="nav-link">
+                      Table View
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/projects/details.html" class="nav-link">
+                      Details
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/projects/create-project.html" class="nav-link">
+                      Create Project
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#sidebar-tasks" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebar-tasks">
+                <i class="bi bi-kanban"></i> Tasks
+              </a>
+              <div class="collapse" id="sidebar-tasks">
+                <ul class="nav nav-sm flex-column">
+                  <li class="nav-item">
+                    <a href="/pages/tasks/overview.html" class="nav-link">
+                      Overview
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/tasks/list-view.html" class="nav-link">
+                      List View
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/tasks/list-view-aside.html" class="nav-link">
+                      List View w/ Details
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/tasks/board-view.html" class="nav-link">
+                      Board View
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/tasks/create-task.html" class="nav-link">
+                      Create Task
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#sidebar-files" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebar-files">
+                <i class="bi bi-file-earmark-text"></i> Files
+              </a>
+              <div class="collapse" id="sidebar-files">
+                <ul class="nav nav-sm flex-column">
+                  <li class="nav-item">
+                    <a href="/pages/files/overview.html" class="nav-link">
+                      Overview
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/files/table-view.html" class="nav-link">
+                      Table View
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/files/media-gallery.html" class="nav-link">
+                      Media Gallery
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#sidebar-integrations" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebar-integrations">
+                <i class="bi bi-terminal"></i> Integrations
+              </a>
+              <div class="collapse" id="sidebar-integrations">
+                <ul class="nav nav-sm flex-column">
+                  <li class="nav-item">
+                    <a href="/pages/integrations/applications.html" class="nav-link">
+                      Applications
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/integrations/manage-apps.html" class="nav-link">
+                      Manage Apps
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#sidebar-user" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebar-user">
+                <i class="bi bi-people"></i> User
+              </a>
+              <div class="collapse" id="sidebar-user">
+                <ul class="nav nav-sm flex-column">
+                  <li class="nav-item">
+                    <a href="/pages/user/profile.html" class="nav-link">
+                      Profile
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/user/table-view.html" class="nav-link">
+                      Table View
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/user/permissions.html" class="nav-link">
+                      Permissions
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#sidebar-settings" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebar-settings">
+                <i class="bi bi-gear"></i> Settings
+              </a>
+              <div class="collapse" id="sidebar-settings">
+                <ul class="nav nav-sm flex-column">
+                  <li class="nav-item">
+                    <a href="/pages/settings/general.html" class="nav-link">
+                      General
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/settings/security.html" class="nav-link">
+                      Security
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/settings/team.html" class="nav-link">
+                      Team
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/settings/billing.html" class="nav-link">
+                      Billing
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/settings/notifications.html" class="nav-link">
+                      Notifications
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#sidebar-authentication" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebar-authentication">
+                <i class="bi bi-person-bounding-box"></i> Authentication
+              </a>
+              <div class="collapse" id="sidebar-authentication">
+                <ul class="nav nav-sm flex-column">
+                  <li class="nav-item">
+                    <a href="/pages/authentication/basic-login.html" class="nav-link">
+                      Basic Login
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/authentication/basic-register.html" class="nav-link">
+                      Basic Register
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/authentication/basic-recover.html" class="nav-link">
+                      Basic Recover
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/authentication/side-login.html" class="nav-link">
+                      Side Login
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/authentication/side-register.html" class="nav-link">
+                      Side Register
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/authentication/side-recover.html" class="nav-link">
+                      Side Recover
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+          <!-- Divider -->
+          <hr class="navbar-divider my-4 opacity-70">
+          <!-- Documentation -->
+          <ul class="navbar-nav">
+            <li>
+              <span class="nav-link text-xs font-semibold text-uppercase text-muted ls-wide">
+                Resources
+              </span>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link py-2" href="/docs">
+                <i class="bi bi-code-square"></i> Documentation
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link py-2 d-flex align-items-center" href="https://webpixels.io/themes/clever-admin-dashboard-template/releases" target="_blank">
+                <i class="bi bi-journals"></i>
+                <span>Changelog</span>
+                <span class="badge badge-sm bg-soft-success text-success rounded-pill ms-auto">v1.0.0</span>
+              </a>
+            </li>
+          </ul>
+          <!-- Push content down -->
+          <div class="mt-auto"></div>
+          <!-- User menu -->
+          <div class="my-4 px-lg-6 position-relative">
+            <div class="dropup w-full">
+              <button class="btn-primary d-flex w-full py-3 ps-3 pe-4 align-items-center shadow shadow-3-hover rounded-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="me-3">
+                  <img alt="..." src="/img/people/img-profile.jpg" class="avatar avatar-sm rounded-circle">
+                </span>
+                <span class="flex-fill text-start text-sm font-semibold">
+                  Tahlia Mooney
+                </span>
+                <span>
+                  <i class="bi bi-chevron-expand text-white text-opacity-70"></i>
+                </span>
+              </button>
+              <div class="dropdown-menu dropdown-menu-end w-full">
+                <div class="dropdown-header">
+                  <span class="d-block text-sm text-muted mb-1">Signed in as</span>
+                  <span class="d-block text-heading font-semibold">Tahlia Mooney</span>
+                </div>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">
+                  <i class="bi bi-house me-3"></i>Home
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="bi bi-pencil me-3"></i>Profile
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="bi bi-gear me-3"></i>Settings
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">
+                  <i class="bi bi-box-arrow-left me-3"></i>Logout
+                </a>
+              </div>
+            </div>
+            <div class="d-flex gap-3 justify-content-center align-items-center mt-6 d-none">
+              <div>
+                <i class="bi bi-moon-stars me-2 text-warning me-2"></i>
+                <span class="text-heading text-sm font-bold">Dark mode</span>
+              </div>
+              <div class="ms-auto">
+                <div class="form-check form-switch me-n2">
+                  <input class="form-check-input" type="checkbox" id="switch-dark-mode">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- Content -->
+    <div class="h-screen flex-grow-1 overflow-y-lg-auto">
+      <!-- Header -->
+      <header>
+        <div class="container-fluid max-w-screen-lg px-lg-24">
+          <div class="pt-6 border-bottom">
+            <div class="row align-items-center">
+              <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+                <!-- Title -->
+                <h1 class="font-bolder ls-tight">
+                  Style Guide
+                </h1>
+              </div>
+              <!-- Actions -->
+              <div class="col-sm-6 col-12">
+                <div class="hstack gap-5 justify-content-end">
+                  <a href="https://github.com/webpixels" class="text-lg text-muted text-primary-hover" target="_blank">
+                    <i class="bi bi-github"></i>
+                  </a>
+                  <a href="https://github.com/webpixels/support/discussions/categories/bootstrap-themes" class="btn btn-sm btn-neutral" target="_blank">
+                    <span>Have an issue?</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <!-- Nav -->
+            <ul class="nav nav-tabs overflow-x border-0 mt-4">
+              <li class="nav-item">
+                <a href="/docs" class="nav-link">Getting Started</a>
+              </li>
+              <li class="nav-item">
+                <a href="/docs/styleguide" class="nav-link active">Style Guide</a>
+              </li>
+              <li class="nav-item d-none">
+                <a href="/docs/plugins" class="nav-link">Plugins</a>
+              </li>
+              <li class="nav-item">
+                <a href="/docs/customize" class="nav-link">Customize</a>
+              </li>
+              <li class="nav-item">
+                <a href="/docs/about" class="nav-link">About</a>
+              </li>
+              <li class="nav-item">
+                <a href="https://webpixels.io/themes/clever-admin-dashboard-template/releases" class="nav-link" target="_blank">
+                  <i class="bi bi-box-arrow-up-right me-2"></i>Changelog
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <!-- Main -->
+      <main class="py-6">
+        <div class="container-fluid max-w-screen-lg px-lg-24">
+          <article class="article">
+            <h2>Colors</h2>
+            <p>All the colors are available as Sass variables and a Sass map in the variables file. We use them to create a subset of these colors for a theme palette for easier usage. It
+              allows you to remain consistent.</p>
+            <h3>Available colors</h3>
+            <p>We manually created variables for every tint and shade ourselves. We specify the midpoint value (e.g., <code>$indigo-500</code>) and use custom color functions to tint (lighten) or shade (darken) our colors via Sass’s mix() color function.</p>
+            <div class="vstack gap-6">
+              <div class="d-flex align-items-center flex-wrap">
+                <div class="w-20 flex-shrink-0">
+                  <h6>Blue</h6>
+                </div>
+                <div class="d-flex gap-2">
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-blue-100">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">100</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-blue-200">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">200</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-blue-300">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">300</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-blue-400">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">400</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-blue-500">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">500</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-blue-600">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">600</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-blue-700">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">700</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-blue-800">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">800</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-blue-900">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">900</span>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex align-items-center flex-wrap">
+                <div class="w-20 flex-shrink-0">
+                  <h6>Indigo</h6>
+                </div>
+                <div class="d-flex gap-2">
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-indigo-100">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">100</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-indigo-200">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">200</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-indigo-300">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">300</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-indigo-400">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">400</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-indigo-500">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">500</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-indigo-600">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">600</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-indigo-700">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">700</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-indigo-800">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">800</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-indigo-900">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">900</span>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex align-items-center flex-wrap">
+                <div class="w-20 flex-shrink-0">
+                  <h6>Purple</h6>
+                </div>
+                <div class="d-flex gap-2">
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-purple-100">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">100</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-purple-200">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">200</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-purple-300">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">300</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-purple-400">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">400</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-purple-500">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">500</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-purple-600">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">600</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-purple-700">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">700</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-purple-800">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">800</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-purple-900">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">900</span>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex align-items-center flex-wrap">
+                <div class="w-20 flex-shrink-0">
+                  <h6>Pink</h6>
+                </div>
+                <div class="d-flex gap-2">
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-pink-100">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">100</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-pink-200">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">200</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-pink-300">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">300</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-pink-400">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">400</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-pink-500">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">500</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-pink-600">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">600</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-pink-700">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">700</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-pink-800">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">800</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-pink-900">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">900</span>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex align-items-center flex-wrap">
+                <div class="w-20 flex-shrink-0">
+                  <h6>Red</h6>
+                </div>
+                <div class="d-flex gap-2">
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-red-100">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">100</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-red-200">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">200</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-red-300">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">300</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-red-400">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">400</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-red-500">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">500</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-red-600">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">600</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-red-700">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">700</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-red-800">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">800</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-red-900">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">900</span>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex align-items-center flex-wrap">
+                <div class="w-20 flex-shrink-0">
+                  <h6>Orange</h6>
+                </div>
+                <div class="d-flex gap-2">
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-orange-100">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">100</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-orange-200">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">200</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-orange-300">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">300</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-orange-400">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">400</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-orange-500">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">500</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-orange-600">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">600</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-orange-700">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">700</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-orange-800">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">800</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-orange-900">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">900</span>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex align-items-center flex-wrap">
+                <div class="w-20 flex-shrink-0">
+                  <h6>Yellow</h6>
+                </div>
+                <div class="d-flex gap-2">
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-yellow-100">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">100</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-yellow-200">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">200</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-yellow-300">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">300</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-yellow-400">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">400</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-yellow-500">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">500</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-yellow-600">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">600</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-yellow-700">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">700</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-yellow-800">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">800</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-yellow-900">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">900</span>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex align-items-center flex-wrap">
+                <div class="w-20 flex-shrink-0">
+                  <h6>Green</h6>
+                </div>
+                <div class="d-flex gap-2">
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-green-100">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">100</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-green-200">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">200</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-green-300">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">300</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-green-400">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">400</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-green-500">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">500</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-green-600">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">600</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-green-700">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">700</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-green-800">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">800</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-green-900">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">900</span>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex align-items-center flex-wrap">
+                <div class="w-20 flex-shrink-0">
+                  <h6>Teal</h6>
+                </div>
+                <div class="d-flex gap-2">
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-teal-100">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">100</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-teal-200">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">200</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-teal-300">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">300</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-teal-400">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">400</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-teal-500">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">500</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-teal-600">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">600</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-teal-700">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">700</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-teal-800">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">800</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-teal-900">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">900</span>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex align-items-center flex-wrap">
+                <div class="w-20 flex-shrink-0">
+                  <h6>Cyan</h6>
+                </div>
+                <div class="d-flex gap-2">
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-cyan-100">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">100</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-cyan-200">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">200</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-cyan-300">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">300</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-cyan-400">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">400</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-cyan-500">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">500</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-cyan-600">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">600</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-cyan-700">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">700</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-cyan-800">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">800</span>
+                  </div>
+                  <div class="h-12 w-16 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-cyan-900">
+                    <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">900</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h3>Changing default values</h3>
+            <p>When you do need to customize your palette, you can configure your base colors which will automatically create a complete suite of colors. Be sure to monitor contrast ratios as you customize colors.</p>
+            <p>All variables in the <code>$colors</code> map are defined as standalone variables. To modify an existing color in our <code>$colors</code> map, add the following to your custom Sass file:</p>
+            <pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$blue</span></span><span class="token punctuation">:</span>    #3b6eff<span class="token punctuation">;</span><br><span class="token property"><span class="token variable">$indigo</span></span><span class="token punctuation">:</span>  #6366F1<span class="token punctuation">;</span><br><span class="token property"><span class="token variable">$purple</span></span><span class="token punctuation">:</span>  #5F1F7A<span class="token punctuation">;</span><br><span class="token property"><span class="token variable">$pink</span></span><span class="token punctuation">:</span>    #FF92AE<span class="token punctuation">;</span><br><span class="token property"><span class="token variable">$red</span></span><span class="token punctuation">:</span>     #F16063<span class="token punctuation">;</span><br><span class="token property"><span class="token variable">$orange</span></span><span class="token punctuation">:</span>  #F7936F<span class="token punctuation">;</span><br><span class="token property"><span class="token variable">$yellow</span></span><span class="token punctuation">:</span>  #fdb813<span class="token punctuation">;</span><br><span class="token property"><span class="token variable">$green</span></span><span class="token punctuation">:</span>   #66CB9F<span class="token punctuation">;</span><br><span class="token property"><span class="token variable">$teal</span></span><span class="token punctuation">:</span>    #4DD9CB<span class="token punctuation">;</span><br><span class="token property"><span class="token variable">$cyan</span></span><span class="token punctuation">:</span>    #68DBF2<span class="token punctuation">;</span></code></pre>
+            <hr>
+            <h2>Theme colors</h2>
+            <p>We use a subset of all colors to create a smaller color palette for generating color schemes, also available as Sass variables. This enables more comprehensive customization and extension for any project.</p>
+            <h3>Available theme colors</h3>
+            <div class="d-flex gap-2 flex-wrap">
+              <div class="my-2">
+                <div class="h-20 w-40 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-primary">
+                  <span class="d-block mt-1 text-xs font-bold text-uppercase text-white text-opacity-90">#5C60F5</span>
+                </div>
+                <div class="pt-1">
+                  <span class="d-block text-sm font-semibold font-code">$primary</span>
+                </div>
+              </div>
+              <div class="my-2">
+                <div class="h-20 w-40 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-secondary">
+                  <span class="d-block mt-1 text-xs font-bold text-uppercase text-white text-opacity-90">#f0df0f</span>
+                </div>
+                <div class="pt-1">
+                  <span class="d-block text-sm font-semibold font-code">$secondary</span>
+                </div>
+              </div>
+              <div class="my-2">
+                <div class="h-20 w-40 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-tertiary">
+                  <span class="d-block mt-1 text-xs font-bold text-uppercase text-white text-opacity-90">#FF579A</span>
+                </div>
+                <div class="pt-1">
+                  <span class="d-block text-sm font-semibold font-code">$tertiary</span>
+                </div>
+              </div>
+              <div class="my-2">
+                <div class="h-20 w-40 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-warning">
+                  <span class="d-block mt-1 text-xs font-bold text-uppercase text-white text-opacity-90">#FF8C00</span>
+                </div>
+                <div class="pt-1">
+                  <span class="d-block text-sm font-semibold font-code">$warning</span>
+                </div>
+              </div>
+              <div class="my-2">
+                <div class="h-20 w-40 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-success">
+                  <span class="d-block mt-1 text-xs font-bold text-uppercase text-white text-opacity-90">#00CC88</span>
+                </div>
+                <div class="pt-1">
+                  <span class="d-block text-sm font-semibold font-code">$success</span>
+                </div>
+              </div>
+              <div class="my-2">
+                <div class="h-20 w-40 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-danger">
+                  <span class="d-block mt-1 text-xs font-bold text-uppercase text-white text-opacity-90">#FF3366</span>
+                </div>
+                <div class="pt-1">
+                  <span class="d-block text-sm font-semibold font-code">$danger</span>
+                </div>
+              </div>
+              <div class="my-2">
+                <div class="h-20 w-40 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-info">
+                  <span class="d-block mt-1 text-xs font-bold text-uppercase text-white text-opacity-90">#00D4FF</span>
+                </div>
+                <div class="pt-1">
+                  <span class="d-block text-sm font-semibold font-code">$info</span>
+                </div>
+              </div>
+            </div>
+            <h3>Changing theme colors</h3>
+            <p>Since now we have a pre-defined color palette it is easy to change the default theme colors just by swaping the default value. You can use the variable below for customization.</p>
+            <pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$primary</span></span><span class="token punctuation">:</span>       <span class="token variable">$indigo</span><span class="token punctuation">;</span><br><span class="token property"><span class="token variable">$secondary</span></span><span class="token punctuation">:</span>     <span class="token variable">$gray-300</span><span class="token punctuation">;</span><br><span class="token property"><span class="token variable">$tertiary</span></span><span class="token punctuation">:</span>      <span class="token variable">$pink</span><span class="token punctuation">;</span><br><span class="token property"><span class="token variable">$neutral</span></span><span class="token punctuation">:</span>       <span class="token variable">$white</span><span class="token punctuation">;</span><br><span class="token property"><span class="token variable">$success</span></span><span class="token punctuation">:</span>       <span class="token variable">$green</span><span class="token punctuation">;</span><br><span class="token property"><span class="token variable">$info</span></span><span class="token punctuation">:</span>          <span class="token variable">$cyan</span><span class="token punctuation">;</span><br><span class="token property"><span class="token variable">$warning</span></span><span class="token punctuation">:</span>       <span class="token variable">$orange</span><span class="token punctuation">;</span><br><span class="token property"><span class="token variable">$danger</span></span><span class="token punctuation">:</span>        <span class="token variable">$red</span><span class="token punctuation">;</span><br><span class="token property"><span class="token variable">$light</span></span><span class="token punctuation">:</span>         <span class="token variable">$gray-200</span><span class="token punctuation">;</span><br><span class="token property"><span class="token variable">$dark</span></span><span class="token punctuation">:</span>          <span class="token variable">$gray-900</span><span class="token punctuation">;</span></code></pre>
+            <hr>
+            <h2>Gray colors</h2>
+            <h3>Available gray colors</h3>
+            <p>Each gray color has a specific use in our themes. Some of them are used for backgrounds, some of them are used for component properties or text colors.</p>
+            <div class="vstack gap-6">
+              <div class="d-flex align-items-center">
+                <div class="d-flex gap-2 flex-wrap">
+                  <div>
+                    <div class="h-20 w-40 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-gray-100">
+                      <span class="d-block mt-1 text-xs font-bold text-dark text-opacity-90">100</span>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="h-20 w-40 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-gray-200">
+                      <span class="d-block mt-1 text-xs font-bold text-dark text-opacity-90">200</span>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="h-20 w-40 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-gray-300">
+                      <span class="d-block mt-1 text-xs font-bold text-dark text-opacity-90">300</span>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="h-20 w-40 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-gray-400">
+                      <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">400</span>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="h-20 w-40 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-gray-500">
+                      <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">500</span>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="h-20 w-40 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-gray-600">
+                      <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">600</span>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="h-20 w-40 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-gray-700">
+                      <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">700</span>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="h-20 w-40 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-gray-800">
+                      <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">800</span>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="h-20 w-40 d-inline-flex flex-column align-items-center justify-content-center rounded-2 bg-gray-900">
+                      <span class="d-block mt-1 text-xs font-bold text-white text-opacity-90">900</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h3>Changing gray colors</h3>
+            <p>Inside the variables file you will find the pre-defined gray colors and Sass map. Here’s an example of the variables used:</p>
+            <pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$gray-50</span></span><span class="token punctuation">:</span>  #FAFAFA<span class="token punctuation">;</span><br><span class="token property"><span class="token variable">$gray-100</span></span><span class="token punctuation">:</span> #F7FAFC<span class="token punctuation">;</span><br><span class="token property"><span class="token variable">$gray-200</span></span><span class="token punctuation">:</span> #EDF2F7<span class="token punctuation">;</span><br><span class="token property"><span class="token variable">$gray-300</span></span><span class="token punctuation">:</span> #E2E8F0<span class="token punctuation">;</span><br><span class="token property"><span class="token variable">$gray-400</span></span><span class="token punctuation">:</span> #CBD5E0<span class="token punctuation">;</span><br><span class="token property"><span class="token variable">$gray-500</span></span><span class="token punctuation">:</span> #A0AEC0<span class="token punctuation">;</span><br><span class="token property"><span class="token variable">$gray-600</span></span><span class="token punctuation">:</span> #718096<span class="token punctuation">;</span><br><span class="token property"><span class="token variable">$gray-700</span></span><span class="token punctuation">:</span> #425466<span class="token punctuation">;</span><br><span class="token property"><span class="token variable">$gray-800</span></span><span class="token punctuation">:</span> #2D3748<span class="token punctuation">;</span><br><span class="token property"><span class="token variable">$gray-900</span></span><span class="token punctuation">:</span> #1A202C<span class="token punctuation">;</span></code></pre>
+            <hr>
+            <h2>Typography</h2>
+            <h3>Headings</h3>
+            <p>All HTML headings, <code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code>, are available.</p>
+            <div class="docs-example bg-surface-secondary rounded p-7">
+              <h1 class="py-3">h1. This is a heading</h1>
+              <h2 class="py-3">h2. This is a heading</h2>
+              <h3 class="py-3">h3. This is a heading</h3>
+              <h4 class="py-3">h4. This is a heading</h4>
+              <h5 class="py-3">h5. This is a heading</h5>
+              <h6 class="py-3">h6. This is a heading</h6>
+            </div>
+            <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>h1. This is a heading<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">></span></span>h2. This is a heading<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span><span class="token punctuation">></span></span>h3. This is a heading<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h4</span><span class="token punctuation">></span></span>h4. This is a heading<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h4</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h5</span><span class="token punctuation">></span></span>h5. This is a heading<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h5</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h6</span><span class="token punctuation">></span></span>h6. This is a heading<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h6</span><span class="token punctuation">></span></span></code></pre>
+            <p><code>.h1</code> through <code>.h6</code> classes are also available, for when you want to match the font styling of a heading but cannot use the associated HTML element.</p>
+            <div class="docs-example bg-surface-secondary rounded p-7">
+              <p class="h1 py-3">h1. This is a heading</p>
+              <p class="h2 py-3">h2. This is a heading</p>
+              <p class="h3 py-3">h3. This is a heading</p>
+              <p class="h4 py-3">h4. This is a heading</p>
+              <p class="h5 py-3">h5. This is a heading</p>
+              <p class="h6 py-3">h6. This is a heading</p>
+            </div>
+            <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>h1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>h1. This is a heading<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>h2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>h2. This is a heading<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>h3<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>h3. This is a heading<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>h4<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>h4. This is a heading<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>h5<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>h5. This is a heading<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>h6<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>h6. This is a heading<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre>
+            <h3>Display headings</h3>
+            <p>Traditional heading elements are designed to work best in the meat of your page content. When you need a heading to stand out, consider using a display heading—a larger, slightly more opinionated heading style.</p>
+            <div class="docs-example bg-surface-secondary rounded p-7">
+              <h1 class="display-1 py-3">Display 1</h1>
+              <h2 class="display-2 py-3">Display 2</h2>
+              <h3 class="display-3 py-3">Display 3</h3>
+              <h4 class="display-4 py-3">Display 4</h4>
+              <h5 class="display-5 py-3">Display 5</h5>
+              <h6 class="display-6 py-3">Display 6</h6>
+            </div>
+            <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>display-1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Display heading<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>display-2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Display heading<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>display-3<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Display heading<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>display-4<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Display heading<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>display-5<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Display heading<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>display-6<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Display heading<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span></code></pre>
+            <h3>Lead</h3>
+            <p>Make a paragraph stand out by adding <code>.lead</code>.</p>
+            <div class="docs-example bg-surface-secondary rounded p-7">
+              <p class="lead">
+                This is a lead paragraph. It stands out from regular paragraphs.
+              </p>
+            </div>
+            <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>lead<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    This is a lead paragraph. It stands out from regular paragraphs.<br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre>
+          </article>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="/js/main.js"></script>
+</body>
+
+</html>

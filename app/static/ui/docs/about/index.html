@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="dark light">
+  <title>About | Clever Admin Dashboard Template</title>
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+  <!-- Styles -->
+  <link rel="stylesheet" type="text/css" href="/css/main.css">
+  <!-- Utilities -->
+  <link rel="stylesheet" type="text/css" href="/css/utilities.css">
+  <link href="https://cdn.jsdelivr.net/npm/prism-themes@1.7.0/themes/prism-coldark-dark.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-primary">
+    <!-- Sidebar -->
+    <nav class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-white border-bottom border-bottom-lg-0 border-end-lg" id="sidebar">
+      <div class="container-fluid">
+        <!-- Toggler -->
+        <button class="navbar-toggler ms-n2" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse" aria-controls="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Brand -->
+        <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0" href="/">
+          <img src="/img/logos/clever-primary.svg" alt="...">
+        </a>
+        <!-- User menu (mobile) -->
+        <div class="navbar-user d-lg-none">
+          <!-- Dropdown -->
+          <div class="dropdown">
+            <!-- Toggle -->
+            <a href="#" id="sidebarAvatar" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="avatar-parent-child">
+                <img alt="..." src="/img/people/img-profile.jpg" class="avatar avatar- rounded-circle">
+                <span class="avatar-child avatar-badge bg-success"></span>
+              </div>
+            </a>
+            <!-- Menu -->
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="sidebarAvatar">
+              <a href="#" class="dropdown-item">Profile</a>
+              <a href="#" class="dropdown-item">Settings</a>
+              <a href="#" class="dropdown-item">Billing</a>
+              <hr class="dropdown-divider">
+              <a href="#" class="dropdown-item">Logout</a>
+            </div>
+          </div>
+        </div>
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse" id="sidebarCollapse">
+          <!-- Navigation -->
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#sidebar-projects" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebar-projects">
+                <i class="bi bi-briefcase"></i> Projects
+              </a>
+              <div class="collapse" id="sidebar-projects">
+                <ul class="nav nav-sm flex-column">
+                  <li class="nav-item">
+                    <a href="/pages/projects/overview.html" class="nav-link">
+                      Overview
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/projects/grid-view.html" class="nav-link">
+                      Grid View
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/projects/table-view.html" class="nav-link">
+                      Table View
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/projects/details.html" class="nav-link">
+                      Details
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/projects/create-project.html" class="nav-link">
+                      Create Project
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#sidebar-tasks" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebar-tasks">
+                <i class="bi bi-kanban"></i> Tasks
+              </a>
+              <div class="collapse" id="sidebar-tasks">
+                <ul class="nav nav-sm flex-column">
+                  <li class="nav-item">
+                    <a href="/pages/tasks/overview.html" class="nav-link">
+                      Overview
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/tasks/list-view.html" class="nav-link">
+                      List View
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/tasks/list-view-aside.html" class="nav-link">
+                      List View w/ Details
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/tasks/board-view.html" class="nav-link">
+                      Board View
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/tasks/create-task.html" class="nav-link">
+                      Create Task
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#sidebar-files" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebar-files">
+                <i class="bi bi-file-earmark-text"></i> Files
+              </a>
+              <div class="collapse" id="sidebar-files">
+                <ul class="nav nav-sm flex-column">
+                  <li class="nav-item">
+                    <a href="/pages/files/overview.html" class="nav-link">
+                      Overview
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/files/table-view.html" class="nav-link">
+                      Table View
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/files/media-gallery.html" class="nav-link">
+                      Media Gallery
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#sidebar-integrations" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebar-integrations">
+                <i class="bi bi-terminal"></i> Integrations
+              </a>
+              <div class="collapse" id="sidebar-integrations">
+                <ul class="nav nav-sm flex-column">
+                  <li class="nav-item">
+                    <a href="/pages/integrations/applications.html" class="nav-link">
+                      Applications
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/integrations/manage-apps.html" class="nav-link">
+                      Manage Apps
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#sidebar-user" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebar-user">
+                <i class="bi bi-people"></i> User
+              </a>
+              <div class="collapse" id="sidebar-user">
+                <ul class="nav nav-sm flex-column">
+                  <li class="nav-item">
+                    <a href="/pages/user/profile.html" class="nav-link">
+                      Profile
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/user/table-view.html" class="nav-link">
+                      Table View
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/user/permissions.html" class="nav-link">
+                      Permissions
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#sidebar-settings" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebar-settings">
+                <i class="bi bi-gear"></i> Settings
+              </a>
+              <div class="collapse" id="sidebar-settings">
+                <ul class="nav nav-sm flex-column">
+                  <li class="nav-item">
+                    <a href="/pages/settings/general.html" class="nav-link">
+                      General
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/settings/security.html" class="nav-link">
+                      Security
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/settings/team.html" class="nav-link">
+                      Team
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/settings/billing.html" class="nav-link">
+                      Billing
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/settings/notifications.html" class="nav-link">
+                      Notifications
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#sidebar-authentication" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebar-authentication">
+                <i class="bi bi-person-bounding-box"></i> Authentication
+              </a>
+              <div class="collapse" id="sidebar-authentication">
+                <ul class="nav nav-sm flex-column">
+                  <li class="nav-item">
+                    <a href="/pages/authentication/basic-login.html" class="nav-link">
+                      Basic Login
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/authentication/basic-register.html" class="nav-link">
+                      Basic Register
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/authentication/basic-recover.html" class="nav-link">
+                      Basic Recover
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/authentication/side-login.html" class="nav-link">
+                      Side Login
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/authentication/side-register.html" class="nav-link">
+                      Side Register
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/authentication/side-recover.html" class="nav-link">
+                      Side Recover
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+          <!-- Divider -->
+          <hr class="navbar-divider my-4 opacity-70">
+          <!-- Documentation -->
+          <ul class="navbar-nav">
+            <li>
+              <span class="nav-link text-xs font-semibold text-uppercase text-muted ls-wide">
+                Resources
+              </span>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link py-2" href="/docs">
+                <i class="bi bi-code-square"></i> Documentation
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link py-2 d-flex align-items-center" href="https://webpixels.io/themes/clever-admin-dashboard-template/releases" target="_blank">
+                <i class="bi bi-journals"></i>
+                <span>Changelog</span>
+                <span class="badge badge-sm bg-soft-success text-success rounded-pill ms-auto">v1.0.0</span>
+              </a>
+            </li>
+          </ul>
+          <!-- Push content down -->
+          <div class="mt-auto"></div>
+          <!-- User menu -->
+          <div class="my-4 px-lg-6 position-relative">
+            <div class="dropup w-full">
+              <button class="btn-primary d-flex w-full py-3 ps-3 pe-4 align-items-center shadow shadow-3-hover rounded-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="me-3">
+                  <img alt="..." src="/img/people/img-profile.jpg" class="avatar avatar-sm rounded-circle">
+                </span>
+                <span class="flex-fill text-start text-sm font-semibold">
+                  Tahlia Mooney
+                </span>
+                <span>
+                  <i class="bi bi-chevron-expand text-white text-opacity-70"></i>
+                </span>
+              </button>
+              <div class="dropdown-menu dropdown-menu-end w-full">
+                <div class="dropdown-header">
+                  <span class="d-block text-sm text-muted mb-1">Signed in as</span>
+                  <span class="d-block text-heading font-semibold">Tahlia Mooney</span>
+                </div>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">
+                  <i class="bi bi-house me-3"></i>Home
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="bi bi-pencil me-3"></i>Profile
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="bi bi-gear me-3"></i>Settings
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">
+                  <i class="bi bi-box-arrow-left me-3"></i>Logout
+                </a>
+              </div>
+            </div>
+            <div class="d-flex gap-3 justify-content-center align-items-center mt-6 d-none">
+              <div>
+                <i class="bi bi-moon-stars me-2 text-warning me-2"></i>
+                <span class="text-heading text-sm font-bold">Dark mode</span>
+              </div>
+              <div class="ms-auto">
+                <div class="form-check form-switch me-n2">
+                  <input class="form-check-input" type="checkbox" id="switch-dark-mode">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- Content -->
+    <div class="h-screen flex-grow-1 overflow-y-lg-auto">
+      <!-- Header -->
+      <header>
+        <div class="container-fluid max-w-screen-lg px-lg-24">
+          <div class="pt-6 border-bottom">
+            <div class="row align-items-center">
+              <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+                <!-- Title -->
+                <h1 class="font-bolder ls-tight">
+                  About
+                </h1>
+              </div>
+              <!-- Actions -->
+              <div class="col-sm-6 col-12">
+                <div class="hstack gap-5 justify-content-end">
+                  <a href="https://github.com/webpixels" class="text-lg text-muted text-primary-hover" target="_blank">
+                    <i class="bi bi-github"></i>
+                  </a>
+                  <a href="https://github.com/webpixels/support/discussions/categories/bootstrap-themes" class="btn btn-sm btn-neutral" target="_blank">
+                    <span>Have an issue?</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <!-- Nav -->
+            <ul class="nav nav-tabs overflow-x border-0 mt-4">
+              <li class="nav-item">
+                <a href="/docs" class="nav-link">Getting Started</a>
+              </li>
+              <li class="nav-item">
+                <a href="/docs/styleguide" class="nav-link">Style Guide</a>
+              </li>
+              <li class="nav-item d-none">
+                <a href="/docs/plugins" class="nav-link">Plugins</a>
+              </li>
+              <li class="nav-item">
+                <a href="/docs/customize" class="nav-link">Customize</a>
+              </li>
+              <li class="nav-item">
+                <a href="/docs/about" class="nav-link active">About</a>
+              </li>
+              <li class="nav-item">
+                <a href="https://webpixels.io/themes/clever-admin-dashboard-template/releases" class="nav-link" target="_blank">
+                  <i class="bi bi-box-arrow-up-right me-2"></i>Changelog
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <!-- Main -->
+      <main class="py-6">
+        <div class="container-fluid max-w-screen-lg px-lg-24">
+          <article class="article">
+            <h2>About Webpixels</h2>
+            <p>Supporting designers and developers in building fully responsive and outstandingly executed websites and apps.</p>
+            <p>Thousands of developers and businesses of all sizes use our front-end solutions to quickly design and build responsive mobile-first websites and apps.</p>
+            <p>Check out <strong><a href="https://webpixels.io">our website »</a></strong></p>
+            <h3>Webpixels CSS Framework</h3>
+            <p>Utility and component-centric Design System based on Bootstrap for fast, responsive UI development.</p>
+            <p><strong><a href="https://github.com/webpixels/css">Open Repo »</a></strong></p>
+            <h3>Need more?</h3>
+            <p>Development is much more fun when you don't need to worry about design. With our Bootstrap component library you can create diverse and beautiful websites that are supported by rock-solid design principles.</p>
+            <p>Explore, copy, use and mix hundreds of carefully crafted components made just for Bootstrap.</p>
+            <p><strong><a href="https://webpixels.io/components">Learn more »</a></strong></p>
+            <h2>Useful Resources</h2>
+            <p>Get updates on the development of our tools, components, or themes, and chat with the project maintainers and community members.</p>
+            <ul>
+              <li>Follow <a href="https://twitter.com/intent/user?screen_name=webpxs">@webpxs</a> on Twitter</li>
+              <li>Read and subscribe to <a href="https://webpixels.io/blog">The Official Webpixels Blog</a></li>
+              <li>Get inspired through our designs on <a href="https://dribbble.com/webpixels">Dribbble</a></li>
+              <li>Check out our open-source projects on <a href="https://github.com/webpixels">Github</a></li>
+            </ul>
+          </article>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="dark light">
+  <title>Getting Started | Clever Admin Dashboard Template</title>
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+  <!-- Styles -->
+  <link rel="stylesheet" type="text/css" href="/css/main.css">
+  <!-- Utilities -->
+  <link rel="stylesheet" type="text/css" href="/css/utilities.css">
+  <link href="https://cdn.jsdelivr.net/npm/prism-themes@1.7.0/themes/prism-coldark-dark.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-primary">
+    <!-- Sidebar -->
+    <nav class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-white border-bottom border-bottom-lg-0 border-end-lg" id="sidebar">
+      <div class="container-fluid">
+        <!-- Toggler -->
+        <button class="navbar-toggler ms-n2" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse" aria-controls="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Brand -->
+        <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0" href="/">
+          <img src="/img/logos/clever-primary.svg" alt="...">
+        </a>
+        <!-- User menu (mobile) -->
+        <div class="navbar-user d-lg-none">
+          <!-- Dropdown -->
+          <div class="dropdown">
+            <!-- Toggle -->
+            <a href="#" id="sidebarAvatar" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="avatar-parent-child">
+                <img alt="..." src="/img/people/img-profile.jpg" class="avatar avatar- rounded-circle">
+                <span class="avatar-child avatar-badge bg-success"></span>
+              </div>
+            </a>
+            <!-- Menu -->
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="sidebarAvatar">
+              <a href="#" class="dropdown-item">Profile</a>
+              <a href="#" class="dropdown-item">Settings</a>
+              <a href="#" class="dropdown-item">Billing</a>
+              <hr class="dropdown-divider">
+              <a href="#" class="dropdown-item">Logout</a>
+            </div>
+          </div>
+        </div>
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse" id="sidebarCollapse">
+          <!-- Navigation -->
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#sidebar-projects" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebar-projects">
+                <i class="bi bi-briefcase"></i> Projects
+              </a>
+              <div class="collapse" id="sidebar-projects">
+                <ul class="nav nav-sm flex-column">
+                  <li class="nav-item">
+                    <a href="/pages/projects/overview.html" class="nav-link">
+                      Overview
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/projects/grid-view.html" class="nav-link">
+                      Grid View
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/projects/table-view.html" class="nav-link">
+                      Table View
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/projects/details.html" class="nav-link">
+                      Details
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/projects/create-project.html" class="nav-link">
+                      Create Project
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#sidebar-tasks" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebar-tasks">
+                <i class="bi bi-kanban"></i> Tasks
+              </a>
+              <div class="collapse" id="sidebar-tasks">
+                <ul class="nav nav-sm flex-column">
+                  <li class="nav-item">
+                    <a href="/pages/tasks/overview.html" class="nav-link">
+                      Overview
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/tasks/list-view.html" class="nav-link">
+                      List View
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/tasks/list-view-aside.html" class="nav-link">
+                      List View w/ Details
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/tasks/board-view.html" class="nav-link">
+                      Board View
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/tasks/create-task.html" class="nav-link">
+                      Create Task
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#sidebar-files" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebar-files">
+                <i class="bi bi-file-earmark-text"></i> Files
+              </a>
+              <div class="collapse" id="sidebar-files">
+                <ul class="nav nav-sm flex-column">
+                  <li class="nav-item">
+                    <a href="/pages/files/overview.html" class="nav-link">
+                      Overview
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/files/table-view.html" class="nav-link">
+                      Table View
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/files/media-gallery.html" class="nav-link">
+                      Media Gallery
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#sidebar-integrations" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebar-integrations">
+                <i class="bi bi-terminal"></i> Integrations
+              </a>
+              <div class="collapse" id="sidebar-integrations">
+                <ul class="nav nav-sm flex-column">
+                  <li class="nav-item">
+                    <a href="/pages/integrations/applications.html" class="nav-link">
+                      Applications
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/integrations/manage-apps.html" class="nav-link">
+                      Manage Apps
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#sidebar-user" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebar-user">
+                <i class="bi bi-people"></i> User
+              </a>
+              <div class="collapse" id="sidebar-user">
+                <ul class="nav nav-sm flex-column">
+                  <li class="nav-item">
+                    <a href="/pages/user/profile.html" class="nav-link">
+                      Profile
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/user/table-view.html" class="nav-link">
+                      Table View
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/user/permissions.html" class="nav-link">
+                      Permissions
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#sidebar-settings" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebar-settings">
+                <i class="bi bi-gear"></i> Settings
+              </a>
+              <div class="collapse" id="sidebar-settings">
+                <ul class="nav nav-sm flex-column">
+                  <li class="nav-item">
+                    <a href="/pages/settings/general.html" class="nav-link">
+                      General
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/settings/security.html" class="nav-link">
+                      Security
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/settings/team.html" class="nav-link">
+                      Team
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/settings/billing.html" class="nav-link">
+                      Billing
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/settings/notifications.html" class="nav-link">
+                      Notifications
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#sidebar-authentication" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebar-authentication">
+                <i class="bi bi-person-bounding-box"></i> Authentication
+              </a>
+              <div class="collapse" id="sidebar-authentication">
+                <ul class="nav nav-sm flex-column">
+                  <li class="nav-item">
+                    <a href="/pages/authentication/basic-login.html" class="nav-link">
+                      Basic Login
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/authentication/basic-register.html" class="nav-link">
+                      Basic Register
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/authentication/basic-recover.html" class="nav-link">
+                      Basic Recover
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/authentication/side-login.html" class="nav-link">
+                      Side Login
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/authentication/side-register.html" class="nav-link">
+                      Side Register
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pages/authentication/side-recover.html" class="nav-link">
+                      Side Recover
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+          <!-- Divider -->
+          <hr class="navbar-divider my-4 opacity-70">
+          <!-- Documentation -->
+          <ul class="navbar-nav">
+            <li>
+              <span class="nav-link text-xs font-semibold text-uppercase text-muted ls-wide">
+                Resources
+              </span>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link py-2" href="/docs">
+                <i class="bi bi-code-square"></i> Documentation
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link py-2 d-flex align-items-center" href="https://webpixels.io/themes/clever-admin-dashboard-template/releases" target="_blank">
+                <i class="bi bi-journals"></i>
+                <span>Changelog</span>
+                <span class="badge badge-sm bg-soft-success text-success rounded-pill ms-auto">v1.0.0</span>
+              </a>
+            </li>
+          </ul>
+          <!-- Push content down -->
+          <div class="mt-auto"></div>
+          <!-- User menu -->
+          <div class="my-4 px-lg-6 position-relative">
+            <div class="dropup w-full">
+              <button class="btn-primary d-flex w-full py-3 ps-3 pe-4 align-items-center shadow shadow-3-hover rounded-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="me-3">
+                  <img alt="..." src="/img/people/img-profile.jpg" class="avatar avatar-sm rounded-circle">
+                </span>
+                <span class="flex-fill text-start text-sm font-semibold">
+                  Tahlia Mooney
+                </span>
+                <span>
+                  <i class="bi bi-chevron-expand text-white text-opacity-70"></i>
+                </span>
+              </button>
+              <div class="dropdown-menu dropdown-menu-end w-full">
+                <div class="dropdown-header">
+                  <span class="d-block text-sm text-muted mb-1">Signed in as</span>
+                  <span class="d-block text-heading font-semibold">Tahlia Mooney</span>
+                </div>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">
+                  <i class="bi bi-house me-3"></i>Home
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="bi bi-pencil me-3"></i>Profile
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="bi bi-gear me-3"></i>Settings
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">
+                  <i class="bi bi-box-arrow-left me-3"></i>Logout
+                </a>
+              </div>
+            </div>
+            <div class="d-flex gap-3 justify-content-center align-items-center mt-6 d-none">
+              <div>
+                <i class="bi bi-moon-stars me-2 text-warning me-2"></i>
+                <span class="text-heading text-sm font-bold">Dark mode</span>
+              </div>
+              <div class="ms-auto">
+                <div class="form-check form-switch me-n2">
+                  <input class="form-check-input" type="checkbox" id="switch-dark-mode">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- Content -->
+    <div class="h-screen flex-grow-1 overflow-y-lg-auto">
+      <!-- Header -->
+      <header>
+        <div class="container-fluid max-w-screen-lg px-lg-24">
+          <div class="pt-6 border-bottom">
+            <div class="row align-items-center">
+              <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+                <!-- Title -->
+                <h1 class="font-bolder ls-tight">
+                  Getting Started
+                </h1>
+              </div>
+              <!-- Actions -->
+              <div class="col-sm-6 col-12">
+                <div class="hstack gap-5 justify-content-end">
+                  <a href="https://github.com/webpixels" class="text-lg text-muted text-primary-hover" target="_blank">
+                    <i class="bi bi-github"></i>
+                  </a>
+                  <a href="https://github.com/webpixels/support/discussions/categories/bootstrap-themes" class="btn btn-sm btn-neutral" target="_blank">
+                    <span>Have an issue?</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <!-- Nav -->
+            <ul class="nav nav-tabs overflow-x border-0 mt-4">
+              <li class="nav-item">
+                <a href="/docs" class="nav-link active">Getting Started</a>
+              </li>
+              <li class="nav-item">
+                <a href="/docs/styleguide" class="nav-link">Style Guide</a>
+              </li>
+              <li class="nav-item d-none">
+                <a href="/docs/plugins" class="nav-link">Plugins</a>
+              </li>
+              <li class="nav-item">
+                <a href="/docs/customize" class="nav-link">Customize</a>
+              </li>
+              <li class="nav-item">
+                <a href="/docs/about" class="nav-link">About</a>
+              </li>
+              <li class="nav-item">
+                <a href="https://webpixels.io/themes/clever-admin-dashboard-template/releases" class="nav-link" target="_blank">
+                  <i class="bi bi-box-arrow-up-right me-2"></i>Changelog
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <!-- Main -->
+      <main class="py-6">
+        <div class="container-fluid max-w-screen-lg px-lg-24">
+          <article class="article">
+            <h2>Installation</h2>
+            <p>For easier asset management we've chosen <a href="https://parceljs.org/">Parcel</a>. If you want to see all the npm scripts included for this starter kit, open the <code>package.json</code> file.</p>
+            <p>Next, navigate to the root folder of the site and run:</p>
+            <pre><code>npm install
+</code></pre>
+            <p>To run a local server and watch for changes:</p>
+            <pre><code>npm start
+</code></pre>
+            <p>To build for production:</p>
+            <pre><code>npm run build
+</code></pre>
+            <p>To build for development:</p>
+            <pre><code>npm run dev
+</code></pre>
+            <p>There is also a tutorial available on our website that explains the most important steps for the setup process. Read more about thow to <a href="https://webpixels.io/blog/how-to-get-started-with-bootstrap-and-eleventy">build JAMstack-ready sites with Bootstrap and 11ty (Eleventy)</a>.</p>
+            <hr>
+            <h2>HTML starter template</h2>
+            <p>Be sure to have your pages set up with the latest design and development standards. That means using an HTML5 doctype and including a viewport meta tag for proper responsive behaviors. Put it all together and your pages should look like this:</p>
+            <pre class="language-html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span><br>        <span class="token comment">&lt;!-- Required meta tags --></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>viewport<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>width=device-width, initial-scale=1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br><br>        <span class="token comment">&lt;!-- Your CSS --></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/path/to/styles.css<span class="token punctuation">"</span></span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>Hello, world!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span><br>        <span class="token comment">&lt;!-- Bootstrap Bundle with Popper --></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js<span class="token punctuation">"</span></span> <span class="token attr-name">integrity</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8<span class="token punctuation">"</span></span> <span class="token attr-name">crossorigin</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>anonymous<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
+            <h3>HTML5 doctype</h3>
+            <p>Bootstrap requires the use of the HTML5 doctype. Without it, you’ll see some funky incomplete styling, but including it shouldn’t cause any considerable hiccups.</p>
+            <pre class="language-html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token comment">&lt;!-- ... --></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
+            <h3>Responsive meta tag</h3>
+            <p>Bootstrap is developed mobile first, a strategy in which we optimize code for mobile devices first and then scale up components as necessary using CSS media queries. To ensure proper rendering and touch zooming for all devices, add the responsive viewport meta tag to your
+
+              <head>.
+            </p>
+            <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>viewport<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>width=device-width, initial-scale=1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></code></pre>
+            <hr>
+            <h2>Folder structure</h2>
+            <p>Webpixels CSS was built to be as modular as possible. That means you can control the file size by using only what you need. The library has 35+ Sass component files, 50+ utility files, and form styles that you can import individually.</p>
+            <p>Remember that our CSS toolkit doesn't include any JavaScript on its own. But, since it is based on Bootstrap, you can use its modules and plugins to bring some of the components to life.</p>
+            <h3>Paths</h3>
+            <p>Here's what you need to know about how the files are structured in both git and in the published npm module:</p>
+            <p>In git, all of the SCSS source files live in the <code>src/</code> folder.</p>
+            <p>When published, all of the files in <code>src/</code> are &quot;hoisted&quot; to the package root so that you can import files like this:</p>
+            <pre class="language-scss"><code class="language-scss"><span class="token keyword">@import</span> <span class="token string">'@webpixels/css/utilities'</span><span class="token punctuation">;</span></code></pre>
+            <p>All bundle interdependencies within the framework are defined as relative imports (e.g. with ../), so everything should work fine as long as the <code>@webpixels/css</code> directory is in one of your Sass include paths (i.e. node_modules).</p>
+            <h3>Base</h3>
+            <p>When you <code>@import</code> the base module you include the files that take care of the variables, styleguide, typography system, and functions. The base module is required on each project, and must be included before anything else, as follows:</p>
+            <pre class="language-scss"><code class="language-scss"><span class="token keyword">@import</span> <span class="token string">"@webpixels/css/base"</span><span class="token punctuation">;</span></code></pre>
+            <h3>Components</h3>
+            <p>The CSS components can be loaded all at once:</p>
+            <pre class="language-scss"><code class="language-scss"><span class="token keyword">@import</span> <span class="token string">"@webpixels/css/components"</span><span class="token punctuation">;</span></code></pre>
+            <h3>Forms</h3>
+            <p>You can import the form styles like this:</p>
+            <pre class="language-scss"><code class="language-scss"><span class="token keyword">@import</span> <span class="token string">"@webpixels/css/forms"</span><span class="token punctuation">;</span></code></pre>
+            <h3>Utilities</h3>
+            <p>Make use of utility classes by importing a single line of code:</p>
+            <pre class="language-scss"><code class="language-scss"><span class="token keyword">@import</span> <span class="token string">"@webpixels/css/utilities"</span><span class="token punctuation">;</span></code></pre>
+            <hr>
+            <h2>Optimizing CSS</h2>
+            <p>Using the default configuration, Webpixels CSS comes in at <strong>83.6kb</strong> minified and gzipped.</p>
+            <h3>Including components individually</h3>
+            <p>Before you start to use tools that remove unused classee like PurgeCSS, you can make some broad optimizations by only including the component styles you think you'll need.</p>
+            <p>Instead of including components with <code>@import &quot;@webpixels/css/components&quot;</code> you can include them one by one. This way you can comment or remove entirely specific lines as needed, then recompile to use them.</p>
+            <pre class="language-scss"><code class="language-scss"><span class="token keyword">@import</span> <span class="token string">"@webpixels/css/components/accordions"</span><span class="token punctuation">;</span><br><span class="token keyword">@import</span> <span class="token string">"@webpixels/css/components/alerts"</span><span class="token punctuation">;</span><br><span class="token keyword">@import</span> <span class="token string">"@webpixels/css/components/avatars"</span><span class="token punctuation">;</span><br><span class="token keyword">@import</span> <span class="token string">"@webpixels/css/components/badges"</span><span class="token punctuation">;</span><br><span class="token keyword">@import</span> <span class="token string">"@webpixels/css/components/breadcrumbs"</span><span class="token punctuation">;</span><br><span class="token keyword">@import</span> <span class="token string">"@webpixels/css/components/buttons"</span><span class="token punctuation">;</span><br><span class="token keyword">@import</span> <span class="token string">"@webpixels/css/components/cards"</span><span class="token punctuation">;</span><br><span class="token keyword">@import</span> <span class="token string">"@webpixels/css/components/carousels"</span><span class="token punctuation">;</span><br><span class="token keyword">@import</span> <span class="token string">"@webpixels/css/components/dropdowns"</span><span class="token punctuation">;</span><br><span class="token keyword">@import</span> <span class="token string">"@webpixels/css/components/frames"</span><span class="token punctuation">;</span><br><span class="token keyword">@import</span> <span class="token string">"@webpixels/css/components/icons"</span><span class="token punctuation">;</span><br><span class="token keyword">@import</span> <span class="token string">"@webpixels/css/components/list-groups"</span><span class="token punctuation">;</span><br><span class="token keyword">@import</span> <span class="token string">"@webpixels/css/components/modals"</span><span class="token punctuation">;</span><br><span class="token keyword">@import</span> <span class="token string">"@webpixels/css/components/navbars"</span><span class="token punctuation">;</span><br><span class="token keyword">@import</span> <span class="token string">"@webpixels/css/components/navs"</span><span class="token punctuation">;</span><br><span class="token keyword">@import</span> <span class="token string">"@webpixels/css/components/omnisearches"</span><span class="token punctuation">;</span><br><span class="token keyword">@import</span> <span class="token string">"@webpixels/css/components/paginations"</span><span class="token punctuation">;</span><br><span class="token keyword">@import</span> <span class="token string">"@webpixels/css/components/popovers"</span><span class="token punctuation">;</span><br><span class="token keyword">@import</span> <span class="token string">"@webpixels/css/components/progress"</span><span class="token punctuation">;</span><br><span class="token keyword">@import</span> <span class="token string">"@webpixels/css/components/shapes"</span><span class="token punctuation">;</span><br><span class="token keyword">@import</span> <span class="token string">"@webpixels/css/components/spinners"</span><span class="token punctuation">;</span><br><span class="token keyword">@import</span> <span class="token string">"@webpixels/css/components/tables"</span><span class="token punctuation">;</span><br><span class="token keyword">@import</span> <span class="token string">"@webpixels/css/components/toasts"</span><span class="token punctuation">;</span><br><span class="token keyword">@import</span> <span class="token string">"@webpixels/css/components/tooltips"</span><span class="token punctuation">;</span></code></pre>
+            <h3>Remove unused CSS</h3>
+            <p>Removing the unused CSS is an important aspect we need to take care of. Since Webpixels CSS includes pre-built CSS component modules and an extended utilities library, the file size of the file becomes a little too heavy to leave it this way in production mode.</p>
+            <p>To solve this, we'll use Purge CSS to remove the unused CSS and decrease the file size considerably. Here's an example from a Laravel Mix configuration.</p>
+            <pre class="language-js"><code class="language-js"><span class="token keyword">let</span> mix <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'laravel-mix'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token keyword">let</span> purgeCss <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'laravel-mix-purgecss'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>mix<span class="token punctuation">.</span><span class="token function">sass</span><span class="token punctuation">(</span><span class="token string">'resources/sass/app.scss'</span><span class="token punctuation">,</span> <span class="token string">'public/css'</span><span class="token punctuation">,</span>  <span class="token punctuation">{</span><br>    <span class="token literal-property property">sassOptions</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>      	<span class="token literal-property property">includePaths</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'node_modules'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>    <span class="token punctuation">}</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><span class="token keyword">if</span> <span class="token punctuation">(</span>mix<span class="token punctuation">.</span><span class="token function">inProduction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>	mix<span class="token punctuation">.</span><span class="token function">purgeCss</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>       	<span class="token literal-property property">enabled</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>	   	<span class="token literal-property property">extend</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>		   	<span class="token literal-property property">safelist</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>	      		<span class="token literal-property property">deep</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>					<span class="token comment">// Bootstrap</span><br>					<span class="token operator">/</span>data<span class="token operator">-</span>bs<span class="token operator">-</span><span class="token punctuation">.</span><span class="token operator">*</span><span class="token operator">/</span><span class="token punctuation">,</span> <span class="token comment">// data attributes used by bootstrap for js plugins</span><br>					<span class="token operator">/</span>bs<span class="token operator">-</span><span class="token punctuation">.</span><span class="token operator">*</span><span class="token operator">/</span><span class="token punctuation">,</span> <span class="token comment">// classes used by bootstrap for JS components</span><br>					<span class="token operator">/</span>fade$<span class="token operator">/</span><span class="token punctuation">,</span><br>					<span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">show$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span><br>					<span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">modal-backdrop$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span><br>					<span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">modal-open$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span><br>					<span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">collapse$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span><br>					<span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">collapsing$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span><br>					<span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">tooltip.*</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span><br>					<span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">popover.*</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span><br>				<span class="token punctuation">]</span><span class="token punctuation">,</span><br>	    	<span class="token punctuation">}</span><br>       	<span class="token punctuation">}</span><span class="token punctuation">,</span><br>    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+            <p>As you can see, a safelist has to be defined in order to let know Purge CSS to skip those class names, since these are injected dynamically by the Bootstrap's JS plugins. If you use any other third-party library and you <code>@import</code> its styles in the main CSS file, make sure to <a href="https://purgecss.com/safelisting.html">add the related class names to the safelist</a>.</p>
+          </article>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,193 @@
+<div class="offcanvas offcanvas-end w-full w-lg-1/3" data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1" id="offcanvasCreate" aria-labelledby="offcanvasCreateLabel">
+  <div class="offcanvas-header border-bottom py-5 bg-surface-secondary">
+    <h5 class="offcanvas-title" id="offcanvasCreateLabel">Create a new task</h5>
+    <button type="button" class="btn-close text-reset text-xs" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="vstack gap-8">
+      <!-- Title -->
+      <input type="text" class="form-control form-control-flush text-lg font-bold" placeholder="Enter your task name ..." value="Click here and start typing 😎" />
+      <!-- Description -->
+      <div class="border rounded">
+        <div>
+          <div class="textarea-autosize">
+            <textarea class="form-control border-0 shadow-none p-4" rows="3" placeholder="Enter description" oninput="this.parentNode.dataset.replicatedValue = this.value"></textarea>
+          </div>
+          <div class="d-flex align-items-center px-6 py-3 border-top">
+            <div class="flex-fill d-flex align-items-center">
+              <h6 class="font-semibold text-xs text-muted text-opacity-60">Markdown formatting</h6>
+            </div>
+            <div class="text-end">
+              <div class="hstack gap-5 align-items-center">
+                <a href="#!" class="text-lg text-muted text-primary-hover">
+                  <i class="bi bi-images"></i>
+                </a>
+                <a href="#!" class="text-lg text-muted text-primary-hover">
+                  <i class="bi bi-emoji-smile"></i>
+                </a>
+                <a href="#!" class="text-lg text-muted text-primary-hover">
+                  <i class="bi bi-paperclip"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Subtasks -->
+      <div>
+        <h6 class="mb-4">Subtasks</h6>
+        <div class="vstack gap-3">
+          <div>
+            <div class="form-check form-check-linethrough">
+              <input class="form-check-input w-5 h-5 mt-0 rounded-circle border-dashed flex-none" type="checkbox" checked>
+              <a href="#offcanvas-show-task" class="form-check-label font-regular ms-2" data-bs-toggle="offcanvas">
+                Keep my mentality healthy by taking walks outside
+              </a>
+            </div>
+          </div>
+          <div>
+            <div class="form-check form-check-linethrough">
+              <input class="form-check-input w-5 h-5 mt-0 rounded-circle border-dashed flex-none" type="checkbox">
+              <a href="#offcanvas-show-task" class="form-check-label font-regular ms-2" data-bs-toggle="offcanvas">
+                Build some new components in Figma
+              </a>
+            </div>
+          </div>
+          <div>
+            <div class="form-check form-check-linethrough">
+              <input class="form-check-input w-5 h-5 mt-0 rounded-circle border-dashed flex-none" type="checkbox">
+              <a href="#offcanvas-show-task" class="form-check-label font-regular ms-2" data-bs-toggle="offcanvas">
+                Figure out how to use Clever from the help center!
+              </a>
+            </div>
+          </div>
+          <div>
+            <div class="form-check form-check-linethrough">
+              <input class="form-check-input w-5 h-5 mt-0 rounded-circle border-dashed flex-none" type="checkbox">
+              <a href="#offcanvas-show-task" class="form-check-label font-regular ms-2" data-bs-toggle="offcanvas">
+                Create wireframes for the new dashboard
+              </a>
+            </div>
+          </div>
+        </div>
+        <div>
+          <input type="text" class="form-control form-control-sm mt-4 mb-3" placeholder="Add another subtask" />
+          <div class="d-flex gap-3">
+            <button type="button" class="btn btn-link p-0 text-muted text-danger-hover text-sm font-semibold">Cancel</button>
+            <button type="button" class="btn btn-link p-0 link-success text-sm font-semibold">Save task</button>
+          </div>
+        </div>
+      </div>
+      <hr class="m-0" />
+      <!-- Attachments -->
+      <div>
+        <h6 class="mb-3">Attachments</h6>
+        <div>
+          <div class="rounded border-2 border-dashed border-primary-hover position-relative">
+            <div class="d-flex justify-content-center px-5 py-5">
+              <label for="file_upload" class="position-absolute w-full h-full top-0 start-0 cursor-pointer">
+                <input id="file_upload" name="file_upload" type="file" class="visually-hidden">
+              </label>
+              <div class="text-center">
+                <div class="text-2xl text-muted">
+                  <i class="bi bi-upload"></i>
+                </div>
+                <div class="d-flex text-sm mt-3">
+                  <p class="font-semibold">Upload a file or drag and drop</p>
+                </div>
+                <p class="text-xs text-gray-500">
+                  PNG, JPG, GIF up to 3MB
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- Upload preview -->
+          <div class="list-group list-group-flush mt-2">
+            <div class="list-group-item py-3 d-flex align-items-center">
+              <div class="flex-fill">
+                <!-- Title -->
+                <span class="d-block h6 text-sm font-semibold mb-1">task-img-1.png</span>
+                <!-- Subtitle -->
+                <span class="d-block text-xs text-muted">350 kb</span>
+              </div>
+              <div class="ms-auto">
+                <div class="dropdown">
+                  <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="bi bi-three-dots-vertical"></i>
+                  </a>
+                  <div class="dropdown-menu">
+                    <a href="#!" class="dropdown-item">
+                      Action
+                    </a>
+                    <a href="#!" class="dropdown-item">
+                      Another action
+                    </a>
+                    <a href="#!" class="dropdown-item">
+                      Something else here
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="list-group-item py-3 d-flex align-items-center">
+              <div class="flex-fill">
+                <!-- Title -->
+                <span class="d-block h6 text-sm font-semibold mb-1">task-img-1.png</span>
+                <!-- Subtitle -->
+                <span class="d-block text-xs text-muted">350 kb</span>
+              </div>
+              <div class="ms-auto">
+                <div class="dropdown">
+                  <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="bi bi-three-dots-vertical"></i>
+                  </a>
+                  <div class="dropdown-menu">
+                    <a href="#!" class="dropdown-item">
+                      Action
+                    </a>
+                    <a href="#!" class="dropdown-item">
+                      Another action
+                    </a>
+                    <a href="#!" class="dropdown-item">
+                      Something else here
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="list-group-item py-3 d-flex align-items-center">
+              <div class="flex-fill">
+                <!-- Title -->
+                <span class="d-block h6 text-sm font-semibold mb-1">task-img-1.png</span>
+                <!-- Subtitle -->
+                <span class="d-block text-xs text-muted">350 kb</span>
+              </div>
+              <div class="ms-auto">
+                <div class="dropdown">
+                  <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="bi bi-three-dots-vertical"></i>
+                  </a>
+                  <div class="dropdown-menu">
+                    <a href="#!" class="dropdown-item">
+                      Action
+                    </a>
+                    <a href="#!" class="dropdown-item">
+                      Another action
+                    </a>
+                    <a href="#!" class="dropdown-item">
+                      Something else here
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer py-2 bg-surface-secondary">
+    <button type="button" class="btn btn-sm btn-neutral" data-bs-dismiss="offcanvas">Close</button>
+    <button type="button" class="btn btn-sm btn-primary">Save</button>
+  </div>
+</div>

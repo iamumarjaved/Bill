@@ -1,0 +1,33 @@
+<div class="offcanvas offcanvas-end w-full w-lg-1/3" data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1" id="offcanvasCreate" aria-labelledby="offcanvasCreateLabel">
+  <div class="offcanvas-header border-bottom py-5 bg-surface-secondary">
+    <h5 class="offcanvas-title" id="offcanvasCreateLabel">Add a new role</h5>
+    <button type="button" class="btn-close text-reset text-xs" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body vstack gap-5">
+    <!-- Inputs -->
+    <div class="row g-5">
+      <div class="col-md-12">
+        <div>
+          <label class="form-label">Role name</label>
+          <input type="text" class="form-control" placeholder="Role name">
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div>
+          <label class="form-label">Description</label>
+          <textarea class="form-control" placeholder="Role description ..." rows="2"></textarea>
+        </div>
+      </div>
+    </div>
+    <!-- Permissions -->
+    <div>
+      <label class="form-label">Select permissions</label>
+      <div class="list-group list-group-flush gap-3">
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer py-2 bg-surface-secondary">
+    <button type="button" class="btn btn-sm btn-neutral" data-bs-dismiss="offcanvas">Close</button>
+    <button type="button" class="btn btn-sm btn-primary">Save</button>
+  </div>
+</div>
