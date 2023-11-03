@@ -27,12 +27,11 @@ $(document).ready(function () {
 
 function makeRequest(url=base_url+"/api/riepilogo/riepilogo/") {
     document.getElementById("end-marker").innerHTML = ""
-    var token = getToken();
     $.ajax({
         url: url,
         
         headers:{
-            'Authorization' : 'Bearer '+ token
+            'Authorization' : 'Bearer '+getToken()
         },
         async: true,
         dataType: 'json',
@@ -53,46 +52,6 @@ function makeRequest(url=base_url+"/api/riepilogo/riepilogo/") {
           } else {
             console.error(error);
           }
-        }
-    });
-        $.ajax({
-        type: 'GET',
-        url: '/api/historic/CurrentUserView/',  // Your API endpoint
-        headers:{
-            'Authorization' : 'Bearer '+ token
-        },
-                async: true,
-        dataType: 'json',
-        success: function(response) {
-            $('#username, #username-, #user, #user-').text(response.name);
-            $('#user-profile, #user-profilee, #user-profileee').attr('src', response.profile_image);
-
-
-        },
-        error: function(error) {
-            console.log('Error:', error);
-        }
-    });
-    $.ajax({
-        type: 'GET',
-        url: '/api/historic/historic/total_counter/',  // Your API endpoint
-        headers:{
-            'Authorization' : 'Bearer '+ token
-        },
-                async: true,
-        dataType: 'json',
-        success: function(response) {
-            $('#historic').text(response.all);
-            $('#domestic_linehaul').text(response.domestic_linehaul);
-            $('#retail_handling').text(response.retail_handling);
-            $('#wholesale_distribution').text(response.wholesale_distribtion);
-            $('#giacenze_vs_lgi').text(response.giacenze_vs_lgi);
-                        $('#riepil').text(response.riepilogo);
-
-        },
-        error: function(error) {
-            console.log('Error OF NEW:', error);
-            console.error(error);
         }
     });
 }
@@ -122,8 +81,7 @@ function drawTable(data,create_new_header,create_new_body) {
                 let th = document.createElement("th")
                 let input = document.createElement("input")
                 input.setAttribute("placeholder",Object.keys(data[0])[j].toUpperCase().replace(/_/g, " "))
-                input.setAttribute("class",Object.keys(data[0])[j] + " form-control")
-
+                input.setAttribute("class",Object.keys(data[0])[j])
                 if(Object.values(data[0])[j]['type'].includes("Date")){
                     input.setAttribute("type","Date")
                 }

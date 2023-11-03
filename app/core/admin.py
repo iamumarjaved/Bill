@@ -18,10 +18,9 @@ class UserAdmin(BaseUserAdmin):
 
     """Define the aadmin pages for users."""
     ordering = ['id']
-    list_display = ['email', 'name', 'profile_image']
-    list_editable = ['profile_image']
+    list_display = ['email', 'name']
     fieldsets = (
-        (None,{'fields':('name','email','password', 'profile_image')}),
+        (None,{'fields':('name','email','password')}),
         (
             _('Permissions'),
             {
@@ -129,4 +128,3 @@ admin.site.register(models.WHOLESALE_TARIFFE)
 admin.site.register(models.tblSocInvoicing)
 admin.site.register(models.WHL_DISTRIBUTION_N)
 admin.site.register(models.DESTINATION_N)
-admin.site.register(models.COUNTER)

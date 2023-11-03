@@ -65,7 +65,6 @@ class FTP:
     def upload_files(self,paths:list):
         for filename in paths:
             with open(filename, "wb") as file:
-                # Command for uploading the file "STOR filename"
                 self.server.storbinary(f"STOR {os.path.basename(filename)}", file)
 
     def delete_file(self,file:str):
@@ -77,15 +76,3 @@ class FTP:
 
     def close(self):
         self.server.quit()
-
-
-if(__name__ == "__main__"):
-    ftp_obj = FTP("192.168.56.1","sagun","sagun")
-    ftp_obj.change_path("/Udemy - PyTorch for Deep Learning in 2023 Zero to Mastery 2022-11/1. Introduction/")
-    print(ftp_obj.list_files())
-    files = ftp_obj.list_files()
-    ftp_obj.change_path("/Udemy - PyTorch for Deep Learning in 2023 Zero to Mastery 2022-11/10. PyTorch Paper Replicating/")
-    # ftp_obj.download_file('1. PyTorch for Deep Learning.mp4',"temp//")
-    # ftp_obj.download_files(files,"temp//")
-    ftp_obj.upload_file("C:\\Users\\Dell\\Downloads\\Compressed\\chromedriver_win32\\chromedriver.exe")
-    ftp_obj.close()

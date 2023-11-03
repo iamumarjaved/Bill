@@ -20,19 +20,19 @@ $(document).ready(function () {
 });
 
 function makeRequest(url=base_url+"/api/historic/historic/domestic_linehaul/") {
-    var token = getToken();
     $.ajax({
         url: url,
         
         headers:{
-            'Authorization' : 'Bearer '+ token
+            'Authorization' : 'Bearer '+getToken()
         },
         async: true,
         dataType: 'json',
         success: function (data) {
-            drawTable(data["results"],true);
-                    drawTable(data["results"]);
-        drawPaginationButtons(data, currentPage);
+            console.log(data["count"])
+            document.getElementById("prev-page").value = data["previous"]
+            document.getElementById("next-page").value = data["next"]
+            drawTable(data["results"]);
         },
         error: function (xhr, status, error) {
           if (xhr.status === 401) {
@@ -40,46 +40,6 @@ function makeRequest(url=base_url+"/api/historic/historic/domestic_linehaul/") {
           } else {
             console.error(error);
           }
-        }
-    });
-        $.ajax({
-        type: 'GET',
-        url: '/api/historic/CurrentUserView/',  // Your API endpoint
-        headers:{
-            'Authorization' : 'Bearer '+ token
-        },
-                async: true,
-        dataType: 'json',
-        success: function(response) {
-            $('#username, #username-, #user, #user-').text(response.name);
-            $('#user-profile, #user-profilee, #user-profileee').attr('src', response.profile_image);
-
-
-        },
-        error: function(error) {
-            console.log('Error:', error);
-        }
-    });
-    $.ajax({
-        type: 'GET',
-        url: '/api/historic/historic/total_counter/',  // Your API endpoint
-        headers:{
-            'Authorization' : 'Bearer '+ token
-        },
-                async: true,
-        dataType: 'json',
-        success: function(response) {
-            $('#historic').text(response.all);
-            $('#domestic_linehaul').text(response.domestic_linehaul);
-            $('#retail_handling').text(response.retail_handling);
-            $('#wholesale_distribution').text(response.wholesale_distribtion);
-            $('#giacenze_vs_lgi').text(response.giacenze_vs_lgi);
-                        $('#riepil').text(response.riepilogo);
-
-        },
-        error: function(error) {
-            console.log('Error OF NEW:', error);
-            console.error(error);
         }
     });
 }
@@ -118,10 +78,8 @@ function drawTable(data) {
     }
 }
 
-
-function changePage(object) {
-    let url = object.value;
-    makeRequest(url);
+function changePage(object){
+    makeRequest(object.value)
 }
 
 function downloadRequest(object){
@@ -194,81 +152,3 @@ function refreshTokenRequest(request) {
       }
     });
   }
-
-  function drawPaginationButtons(data, currentPage) {
-    const container = $("#pagination-container");
-    container.empty(); // Clear the current pagination buttons
-    let totalPages = Math.ceil(data["count"] / 50); // Assuming 10 items per page
-
-    if (data["previous"]) {
-        container.append(`<button type="button" style="margin: 0.5%;" class="btn btn-light rounded-pill" value="${data["previous"]}" onclick="changePage(this)">&lt;</button>`);
-    }
-
-    // Calculate the range of pages to show
-    let startPage = Math.max(currentPage - 2, 1);
-    let endPage = Math.min(currentPage + 2, totalPages);
-
-    if (currentPage <= 3) {
-        endPage = Math.min(5, totalPages);
-    } else if (currentPage > (totalPages - 3)) {
-        startPage = totalPages - 4;
-    }
-
-    for (let i = startPage; i <= endPage; i++) {
-    if (i === currentPage) {
-        container.append(`<button type="button" style="margin: 0.5%;" class="btn btn-primary rounded-pill" value="http://127.0.0.1/api/historic/historic/wholesale_distribtion/?page_no=${i}" onclick="changePage(this)">${i}</button>`);
-    } else {
-        container.append(`<button type="button" style="margin: 0.5%;" class="btn btn-light rounded-pill" value="http://127.0.0.1/api/historic/historic/wholesale_distribtion/?page_no=${i}" onclick="changePage(this)">${i}</button>`);
-    }
-}
-
-
-    // Show ellipsis if there are more pages lkafter the current visible range
-    if (endPage < totalPages) {
-        container.append(`<span class="mx-1">..</span>`);
-    }
-
-    if (data["next"]) {
-        container.append(`<button type="button" style="margin: 0.5%;" class="btn btn-light rounded-pill" value="${data["next"]}" onclick="changePage(this)">&gt;</button>`);
-    }
-}
-
-function handleInvoiceSearchInput(event) {
-    console.log("function called");
-    const invoiceNumber = event.target.value;
-    if (invoiceNumber) {
-        searchInvoiceByNumber(invoiceNumber);
-    } else {
-        // Optionally reset the table if the search input is empty
-        makeRequest();
-    }
-}
-
-
-function searchInvoiceByNumber(invoiceNumber) {
-    const url = constructInvoiceSearchUrl(invoiceNumber);
-    $.ajax({
-        url: url,
-        headers: {
-            'Authorization': 'Bearer ' + getToken()
-        },
-        async: true,
-        dataType: 'json',
-        success: function(data) {
-            console.log(data,"data");
-            drawTable(data["results"],true);
-        drawPaginationButtons(data, currentPage);        },
-        error: function(xhr, status, error) {
-            if (xhr.status === 401) {
-                refreshTokenRequest(makeRequest);
-            } else {
-                console.error(xhr.responseJSON);
-            }
-        }
-    });
-}
-
-function constructInvoiceSearchUrl(invoiceNumber, base="http://127.0.0.1/api/historic/historic/invoice_search/?") {
-    console.log(`${base}invoice_query=${invoiceNumber}`);
-    return `${base}invoice_query=${invoiceNumber}`;
-}

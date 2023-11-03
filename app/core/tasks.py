@@ -46,7 +46,7 @@ def lookup(date_pd_series, format = "%Y-%m-%d %H:%M"):
 def download_file_FTP():
     """Downloads file from ftp server"""
     ftp = FTP(os.environ.get('FTP_HOST'), os.environ.get('FTP_USERNAME'), os.environ.get('FTP_PASSWORD'))
-    local_path = settings.STATIC_ROOT
+    local_path = os.path.join(settings.STATIC_ROOT,'historic')
     logger.info("Downloading")
 
     ftp.change_path("/historicbook")
@@ -65,15 +65,12 @@ def download_file_FTP():
     with zipfile.ZipFile(os.path.join(local_path,file), mode="r") as archive:
         archive.extractall(local_path)
 
-    for file in files:
-        os.remove(local_path+"/"+file)
-
     # file = "HistoricBook_20230630111056051982.zip"
     csv_file = file.split(".")[0]+".csv"
     filename = os.path.join(local_path,csv_file)
     print(f"reading {datetime.datetime.now()}")
     # filename = os.path.join(local_path,"HistoricBook_20230622110943085791.csv")
-    df = pd.read_csv(filename, sep=";", encoding='windows-1252')
+    df = pd.read_csv(filename, sep=";", encoding='windows-1252',dtype=str)
     df = df[df["Shp.Type desc."] != "PDA"]
     df['598_deliv.to WHs_'] = lookup(df['598_deliv.to WHs'])
     df['599_deliv.to store_'] = lookup(df['599_deliv.to store'])
@@ -81,7 +78,7 @@ def download_file_FTP():
     filtered_df = df[(df['Shp.status'] == 'Delivered') & ((df['598_deliv.to WHs_'] >= yesterday) | (df['599_deliv.to store_'] >= yesterday))]
     df = df[df["Shp.status"]!="Delivered"]
     df = pd.concat([df,filtered_df]).reset_index(drop=True)
-
+    df = df.fillna('')
     # Calculating ID
     id_list = []
     for record_counter in range(len(df)):
@@ -89,7 +86,11 @@ def download_file_FTP():
         shp = df["Master Shp.N."][record_counter]
         country = df["Country"][record_counter]
         pattern = "\d{4}[.,/,-]\d{2}[.,/,-]\d{2}"
-        match = re.findall(pattern,pickup)
+        try:
+            match = re.findall(pattern,pickup)
+        except:
+            print(pickup)
+            print(type(pickup))
         if(len(match) == 0):
             id_list.append(None)
             continue
@@ -177,23 +178,32 @@ def download_file_FTP():
                 else:
                     kwargs[column] = value
             kwargs["encode"] = book["encode"]
+            parcels = book["Parcels"]
+            if(parcels == ""):
+                parcels = 0
+            parcels = float(parcels)
             retail_tariff,status = Tariff.objects.get_or_create(country=book["Country"])
             kwargs["retail_handling"] = max(float(book["Gross weight Kg."]),float(book["Volume m3"])*200) * retail_tariff.retail_handling_cost
             kwargs["domestic_linehaul"] = max(float(book["Gross weight Kg."]),float(book["Volume m3"])*200) * retail_tariff.domestic_linehaul_cost
-            kwargs["sorting"] = 1.5*float(book["Parcels"])
+            kwargs["sorting"] = 1.5*float(parcels)
             try:
                 tariff_per_cartoon = TariffPerCaton.objects.get(country=book["Country"])
                 if(tariff_per_cartoon.city):
                     if(tariff_per_cartoon.city.lower() in book["Destination"].lower()):
-                        kwargs["tariff_per_carton"] = tariff_per_cartoon.tariff*book["Parcel"]
+                        kwargs["tariff_per_carton"] = tariff_per_cartoon.tariff*parcels
                 else:
-                    kwargs["tariff_per_carton"] = tariff_per_cartoon.tariff*book["Parcel"]
+                    kwargs["tariff_per_carton"] = tariff_per_cartoon.tariff*parcels
             except TariffPerCaton.DoesNotExist:
                 pass
             new_books_objects.append(Historic(**kwargs))
         Historic.objects.bulk_create(new_books_objects)
     print(f"done {datetime.datetime.now()}")
-    os.remove(os.path.join(local_path,csv_file))
+    files = os.listdir(local_path)
+    for file in files:
+        try:
+            os.remove(os.path.join(local_path,file))
+        except:
+            pass
     
 
 def rename_columns(column_name):

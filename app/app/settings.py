@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-^040l3u=-5n@+fz17ui+b6pt)dt-_i)_-+m3v+#)sp72w&$p7=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ["172.11.71.21",'127.0.0.1']
 
 
 # Application definition
@@ -164,9 +164,7 @@ CELERY_broker_connection_retry_on_startup = True
 
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5500",
-    "http://localhost"
+    "http://localhost",
+    "http://172.11.71.21"
 ]
 
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')

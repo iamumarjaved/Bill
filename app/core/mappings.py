@@ -71,12 +71,7 @@ column_mapping = {
     "net_performance": "Net Performance",
     "other_deviations": "Other Deviations",
     "comment": "Comment",
-    "custom_id":"ID",
-    "magazzino_di_carico": "MAGAZZINO DI CARICO",
-    "lead_time": "LEAD TIME",
-    "rdduedate_vs_carduedate":"RDDUEDATE vs CARDUEDATE",
-    "rdduedate_vs_required":"RDDUEDATE vs REQUIRED",
-    "required_vs_deliv_to_store_599":"REQUIRED vs DELIV TO STORE 599",
+    "custom_id":"ID"
 }
 
 optional = {
@@ -129,4 +124,3 @@ optional = {
     "comment": "Comment",
     "custom_id":"ID"
 }
-

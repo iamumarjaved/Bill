@@ -1,36 +1,13 @@
-import datetime
 import decimal
-import os
 
-from django.conf.global_settings import MEDIA_URL
 from rest_framework import serializers
 
 from core.models import Historic, tblSocInvoicing
 from core.mappings import column_mapping
 from collections import OrderedDict
-from core.models import User
-from rest_framework.reverse import reverse
-
 
 class HistoricSerializer(serializers.ModelSerializer):
     """Serializer for historic model."""
-    magazzino_di_carico = serializers.SerializerMethodField()
-    lead_time = serializers.SerializerMethodField()
-    state = serializers.SerializerMethodField()
-    rdduedate_vs_carduedate = serializers.SerializerMethodField()
-    rdduedate_vs_required = serializers.SerializerMethodField()
-    required_vs_deliv_to_store_599 = serializers.SerializerMethodField()
-    invoice_url = serializers.SerializerMethodField()
-
-    def get_invoice_url(self, obj):
-        if isinstance(obj, dict):
-            invoice = obj.get('invoice')
-        else:
-            invoice = obj.invoice
-        if invoice:
-            return os.path.join(MEDIA_URL, 'invoices', f"{invoice}.pdf")
-        return None
-
     class Meta:
         model = Historic
         fields = ["brand","customer_type","customer_code","store_id","store_description","city_code",
@@ -41,9 +18,7 @@ class HistoricSerializer(serializers.ModelSerializer):
                   "ata_local_ff_platform_530","deliv_to_whs_598","deliv_to_store_599","cs_code",
                   "groupage","sender_cust_desc","sender_country","logistic_no_merch","destination",
                   "execution_date","custom_id","deviation_code","deviation_date",
-        "category","responsability","gross_performance","net_performance","other_deviations","comment",
-                  "magazzino_di_carico","lead_time","state","rdduedate_vs_carduedate","rdduedate_vs_required",
-                  "required_vs_deliv_to_store_599", "invoice_url"]
+        "category","responsability","gross_performance","net_performance","other_deviations","comment",]
         read_only_fields = fields
     
     def to_representation(self, instance):
@@ -55,68 +30,6 @@ class HistoricSerializer(serializers.ModelSerializer):
             except:
                 representation_new[field] = value
         return representation_new
-
-    def get_magazzino_di_carico(self, obj):
-        # Check if obj is a dictionary and get the invoice accordingly
-        if isinstance(obj, dict):
-            invoice = obj.get('invoice')
-        else:
-            invoice = obj.invoice
-
-        if invoice:
-            return "TRECATE" if '-' in invoice else "STABIO"
-        return None
-
-    def get_lead_time(self, obj):
-        if isinstance(obj, dict):
-            start_date = obj.get('pickup_from_ff_500')
-            end_date = obj.get('deliv_to_store_599')
-        else:
-            start_date = obj.pickup_from_ff_500
-            end_date = obj.deliv_to_store_599
-        if end_date:
-            try:
-                total_days = (end_date - start_date).days
-                # Now exclude weekends between start_date and end_date
-                weekdays = [start_date + datetime.timedelta(days=x) for x in range(total_days)]
-                working_days = sum(1 for day in weekdays if day.weekday() < 5)
-                return working_days
-            except:
-                return 0
-        else:
-            return 0
-
-    def get_state(self, obj):
-        return "LATE" if self.get_lead_time(obj) > 2 else "ON TIME"
-
-    def _date_difference(self, date1, date2):
-        if not date1 or not date2:
-            return 0
-        else:
-            try:
-                return (date1 - date2).days
-            except:
-                date2 = date2.date()
-                return (date1 - date2).days
-
-    def _date_difference_check(self, date1, date2):
-        return "TRUE" if self._date_difference(date1, date2) == 0 else "FALSE"
-
-    def get_rdduedate_vs_carduedate(self, obj):
-        if isinstance(obj, dict):
-            return self._date_difference_check(obj.get('rd_due_date'), obj.get('carrier_due_date'))
-        return self._date_difference_check(obj.rd_due_date, obj.carrier_due_date)
-
-    def get_rdduedate_vs_required(self, obj):
-        if isinstance(obj, dict):
-            return self._date_difference_check(obj.get('rd_due_date'), obj.get('req_delivery_date'))
-        return self._date_difference_check(obj.rd_due_date, obj.req_delivery_date)
-
-    def get_required_vs_deliv_to_store_599(self, obj):
-        if isinstance(obj, dict):
-            return self._date_difference_check(obj.get('req_delivery_date'), obj.get('deliv_to_store_599'))
-        return self._date_difference_check(obj.req_delivery_date, obj.deliv_to_store_599)
-
 
 class HistoricListSerializer(serializers.ModelSerializer):
     """Serializer for historic model."""
@@ -213,8 +126,3 @@ class HistoricSerializer_wholesale_distribtion(HistoricListSerializer):
                   "societa_fatturazione", "whl_distribution", "remote_destination", "TARIFFA_CARTONE_CZ",
                   "new_customer_code", "specific_code"]
         read_only_fields = fields
-
-class CurrentUserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ['name', 'email']

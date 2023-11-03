@@ -1,22 +1,18 @@
-import os
-
-from django.templatetags.static import static
-from rest_framework import viewsets, mixins, filters, status
+from rest_framework import viewsets,mixins,filters
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.exceptions import ValidationError
-from rest_framework.response import Response
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from drf_spectacular.utils import extend_schema
 from drf_spectacular.openapi import OpenApiParameter
-from historic.serializers import HistoricSerializer,HistoricListSerializer,HistoricSerializerRetailHandling,HistoricSerializerDomesticLinehaul, HistoricSerializer_giacenze_vs_lgi, HistoricSerializer_wholesale_distribtion, CurrentUserSerializer
-from core.models import Historic,User, TARIFFE, WHOLESALE_TARIFFE, tblSocInvoicing, WHL_DISTRIBUTION_N, DESTINATION_N, COUNTER, Riepilogo
+from historic.serializers import HistoricSerializer,HistoricListSerializer,HistoricSerializerRetailHandling,HistoricSerializerDomesticLinehaul, HistoricSerializer_giacenze_vs_lgi, HistoricSerializer_wholesale_distribtion
+from core.models import Historic,User, TARIFFE, WHOLESALE_TARIFFE, tblSocInvoicing, WHL_DISTRIBUTION_N, DESTINATION_N
 from core.tasks import generate_excel_file
 from core.pagination import CustomPagination
 from core.mappings import column_mapping
 from django.db.models.functions import Cast, Round, Concat
 from django.db.models import DateField, OuterRef, Subquery, DecimalField, Exists, Sum, Window
-from django.http import HttpResponse, HttpResponseServerError, FileResponse, Http404, JsonResponse
+from django.http import HttpResponse, HttpResponseServerError
 from django.db.models import Q, F, ExpressionWrapper, DateField,Case, When, Value, CharField
 import datetime
 import uuid
@@ -30,8 +26,6 @@ from django.db.models import Subquery, OuterRef, Case, When, Value, CharField
 from django.db.models.functions import Substr, Right, Length, StrIndex
 from django.db.models import Func, Value, CharField
 from django.db.models import Sum, Window, F
-from rest_framework.viewsets import ReadOnlyModelViewSet
-from rest_framework.views import APIView
 
 def generate_unique_id():
     return str(uuid.uuid4())
@@ -148,9 +142,6 @@ class HistoricViewSet(viewsets.GenericViewSet):
                 Q(pickup_from_ff_500__gte=start_date) &
                 Q(pickup_from_ff_500__lte=end_date)
             )
-        counter_obj = COUNTER.objects.get(category='retail_handling')
-        counter_obj.counter = self.queryset.count()
-        counter_obj.save()
         return self.queryset_to_response(self.queryset)
     
     @extend_schema(
@@ -176,10 +167,6 @@ class HistoricViewSet(viewsets.GenericViewSet):
                 Q(pickup_from_ff_500__gte=start_date) &
                 Q(pickup_from_ff_500__lte=end_date)
             )
-
-        counter_obj = COUNTER.objects.get(category='domestic_linehaul')
-        counter_obj.counter = self.queryset.count()
-        counter_obj.save()
         return self.queryset_to_response(self.queryset)
 
     @action(detail=False, methods=['patch'])
@@ -217,60 +204,9 @@ class HistoricViewSet(viewsets.GenericViewSet):
                 Q(pickup_from_ff_500__gte=start_date) &
                 Q(pickup_from_ff_500__lte=end_date)
             )
-        counter_obj = COUNTER.objects.get(category='all')
-        counter_obj.counter = self.queryset.count()
-        counter_obj.save()
         return self.queryset_to_response(self.queryset)
-
-    @extend_schema(
-        parameters=[
-            OpenApiParameter(name='invoice_query', location=OpenApiParameter.QUERY, description='Invoice Search Query',
-                             required=True, type=str),
-        ],
-    )
-    @action(detail=False, methods=['get'], name='Invoice Search')
-    def invoice_search(self, request, *args, **kwargs):
-        """
-        Search for an invoice based on the provided query.
-        """
-        invoice_query = self.request.query_params.get('invoice_query', '').strip()
-
-        if not invoice_query:
-            return Response({"error": "Invoice query is required."}, status=400)
-
-        self.queryset = self.get_queryset().filter(Q(invoice__icontains=invoice_query))
-
-        return self.queryset_to_response(self.queryset)
-
-    @extend_schema(
-        parameters=[
-            OpenApiParameter(name='Counter', location=OpenApiParameter.QUERY, description='Total Counter',
-                             required=True, type=str),
-        ],
-    )
-
-    @action(detail=False, methods=['get'], name='Total Counter')
-    def total_counter(self, request, *args, **kwargs):
-        """Get total counter."""
-        gia = COUNTER.objects.get(category='giacenze_vs_lgi')
-        wholesale = COUNTER.objects.get(category='wholesale_distribtion')
-        all = COUNTER.objects.get(category='all')
-        linehaul = COUNTER.objects.get(category='domestic_linehaul')
-        retail = COUNTER.objects.get(category='retail_handling')
-        repil = Riepilogo.objects.all().count()
-
-
-        data = {
-            "giacenze_vs_lgi": gia.counter,
-            "wholesale_distribtion": wholesale.counter,
-            "all": all.counter,
-            "domestic_linehaul": linehaul.counter,
-            "retail_handling": retail.counter,
-            "riepilogo": repil
-        }
-
-        return JsonResponse(data)
-
+        
+    
     @extend_schema(
             parameters=[
                 OpenApiParameter(name='start_date',location=OpenApiParameter.QUERY, description='Start Date', required=False, type=str),
@@ -345,21 +281,14 @@ class HistoricViewSet(viewsets.GenericViewSet):
                 deliv_to_store_599_date=Cast('deliv_to_store_599', DateField()),
             )
 
-            # Fetch instances in memory
             model_ids = self.queryset.values_list('id', flat=True)
-            instances_to_update = Historic.objects.filter(id__in=model_ids, rd_due_date__isnull=True)
-
-            # Update the instances in memory
-            updated_instances = []
-            for instance in instances_to_update:
-                if instance.ata_local_ff_platform_530:
-                    instance.rd_due_date = instance.ata_local_ff_platform_530.date() + datetime.timedelta(days=1)
-                else:
-                    instance.rd_due_date = instance.deliv_to_store_599
-                updated_instances.append(instance)
-
-            # Use bulk_update to save the changes to the database
-            Historic.objects.bulk_update(updated_instances, ['rd_due_date'])
+            for instance in Historic.objects.filter(id__in=model_ids):
+                if not instance.rd_due_date:
+                    if instance.ata_local_ff_platform_530:
+                        instance.rd_due_date = instance.ata_local_ff_platform_530.date() + datetime.timedelta(days=1)
+                    else:
+                        instance.rd_due_date = instance.deliv_to_store_599
+                    instance.save()
 
             # Calculate the days difference
 
@@ -391,11 +320,10 @@ class HistoricViewSet(viewsets.GenericViewSet):
                                                                                                          decimal_places=2))
             )
 
-            counter_obj = COUNTER.objects.get(category='giacenze_vs_lgi')
-            counter_obj.counter = self.queryset.count()
-            counter_obj.save()
+
             return self.queryset_to_response(self.queryset)
         except Exception as e:
+            print(e)  # log the error
             return HttpResponseServerError(str(e))
 
     @extend_schema(
@@ -641,32 +569,7 @@ class HistoricViewSet(viewsets.GenericViewSet):
                 )
             )
 
-            counter_obj = COUNTER.objects.get(category='wholesale_distribtion')
-            counter_obj.counter = self.queryset.count()
-            counter_obj.save()
             return self.queryset_to_response(self.queryset)
         except Exception as e:
+            print("\n\n\n",e)  # log the error
             return HttpResponseServerError(str(e))
-
-
-class CurrentUserView(APIView):
-    permission_classes = [IsAuthenticated]  # Ensures that user is logged in
-
-    def get(self, request):
-        user = request.user
-        default_image_url = static('images/default.jpg')
-        return Response({
-            'email': user.email,
-            'name': user.name,
-            'profile_image': user.profile_image.url if user.profile_image else default_image_url
-        })
-
-def get_invoice(request, invoice_id):
-    # Construct file path based on invoice ID
-    file_path = f'E:{invoice_id}.pdf'
-    if os.path.exists(file_path):
-        pdf = open(file_path, 'rb')
-        response = FileResponse(pdf, content_type='application/pdf')
-        return response
-    else:
-        return HttpResponse("Invoice not found")

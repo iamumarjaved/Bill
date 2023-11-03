@@ -7,7 +7,7 @@ import sys
 # Set the default Django settings module for the 'celery' program.
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'app.settings')
 
-app = Celery('app', broker="redis://redis:6379/0", backend="redis://redis:6379/0")
+app = Celery('app', broker=os.environ.get("CELERY_BROKER", "redis://redis:6379/0"), backend=os.environ.get("CELERY_BROKER", "redis://redis:6379/0"))
 app.conf.broker_connection_retry_on_startup = True
 # Using a string here means the worker doesn't have to serialize
 # the configuration object to child processes.

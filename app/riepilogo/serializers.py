@@ -47,7 +47,7 @@ class RiepilogoSerializerAPI(MyModelSerializer):
     class Meta:
         model = Riepilogo
         fields = ["id","week","month","magazzino_di_carico","requested_pick_up","requested_pick_up_time","real_arrival","pick_up",
-                  "lgl_warehouse_cut_off","departure_type","country","plate_nr","truck_supplier","truck_type","reference_dedicato",
+                  "lgl_warehouse_cut_off","departure_type","country","id_route","plate_nr","truck_supplier","truck_type","reference_dedicato",
                   "max_load","second_driver","arrival_by_sat","customs_clearance_sat_perfomed_at","arrival_by_harbour_shipping_pwc",
                   "customs_clearance_hs_pwc_perfomed_at","arrival_by_mdl","customs_clearance_mdl_perfomed_at",
                   "arrival_time_date_at_destination","warehouse_cut_off","unloading_date","keep_in_transit_dashboard_yes_no",
@@ -114,3 +114,10 @@ class RiepilogoSerializerPatch(serializers.ModelSerializer):
                     raise serializers.ValidationError({entry_column:["You don't have permission to edit this field"]})
 
         return super().update(instance, validated_data)
+    
+class ReipilogoSerializerID(serializers.ModelSerializer):
+    """Serializer to get id"""
+    id = serializers.ListField(child=serializers.CharField())
+    class Meta:
+        model = Riepilogo
+        fields = ['id']

@@ -1,525 +1,59 @@
-<!doctype html>
-<html lang="en" data-theme="dark">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta name="color-scheme" content="dark light">
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-    <!-- Styles -->
-    <link rel="stylesheet" type="text/css" href="./css/main.css">
-    <!-- Utilities -->
-    <link rel="stylesheet" type="text/css" href="./css/utilities.css">
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riepilogo Partenze</title>
+      <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="./res/css/custom.css">
+    <!-- jQuery -->
+    <script src="https://louboutin.hublogistics.top/public/plugins/jquery/jquery.min.js"></script>
     <style>
-.nav-link {
-    position: relative;
-}
-.navbar-nav .nav-item .nav-link .counter {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: #f2f2f2;
-    border-radius: 50%;
-    padding: 2px 8px;
-    font-weight: bold;
-    margin-right:10px;
-}
-
-.nav .nav-item .nav-link {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.counter {
-    margin-left: 10px;
-    background-color: #f2f2f2;
-    border-radius: 50%;
-    padding: 2px 8px;
-    font-weight: bold;
-    margin-right:10px;
-}
-
-
-
-
+        .nav-sidebar .badge-danger {
+            background-color: #896AFF;
+        }
+        .user-panel {
+            border-top: solid 1px #e7eaf0;
+                border-bottom: solid 1px #e7eaf0;
+        }
+        .sidebar .nav-link:hover, .sidebar .nav-link.active:hover {
+            background-color: #f5f9fc !important;
+        }
+        .nav-link.active {
+            background-color: transparent !important;
+            color: #6c757d !important;
+        }
+        #infinite-list{
+            overflow: auto;
+            height: 20%;
+        }
     </style>
-
 </head>
-
-<body id="historic-pages-body">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
-        <!-- Sidebar -->
-
-        <nav class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-white border-bottom border-bottom-lg-0 border-end-lg" id="sidebar">
-            <div class="container-fluid">
-                <!-- Toggler -->
-                <button class="navbar-toggler ms-n2" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse" aria-controls="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-                <!-- Brand -->
-                <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0" href="./">
-                    <img src="./img/logos/clever-primary.svg" alt="...">
-                </a>
-                <!-- User menu (mobile) -->
-                <div class="navbar-user d-lg-none">
-                    <!-- Dropdown -->
-                    <div class="dropdown">
-                        <!-- Toggle -->
-                        <a href="#" id="sidebarAvatar" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <div class="avatar-parent-child">
-                                <img id="user-profile" alt="..." src="#" class="avatar avatar- rounded-circle">
-                                <span class="avatar-child avatar-badge bg-success"></span>
-                            </div>
-                        </a>
-                        <!-- Menu -->
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="sidebarAvatar">
-                            <a href="#" class="dropdown-item">Profile</a>
-                            <a href="#" class="dropdown-item">Settings</a>
-                            <a href="#" class="dropdown-item">Billing</a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">Logout</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Collapse -->
-                <div class="collapse navbar-collapse" id="sidebarCollapse">
-                    <!-- Navigation -->
-                    <ul class="navbar-nav">
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="historic.html?expand=sidebar-integration" id="historic-pages-link">
-                                <i class="bi bi-journals"></i> Historic Pages
-                                <span class="counter" id="historic"></span>
-                            </a>
-                            <div class="collapse" id="sidebar-integration">
-                                <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item">
-                                        <a href="delivered.html" class="nav-link">
-                      Delivered
-                    </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="transit.html" class="nav-link">
-                      Transit
-                    </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="confirmed.html" class="nav-link">
-                      Confirmed
-                    </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="avalaible.html" class="nav-link">
-                      Available
-                    </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="booked.html" class="nav-link">
-                      Booked
-                    </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="riepilogo-partenze.html">
-                                <i class="bi bi-kanban"></i> Riepilogo Partenze
-                                <span class="counter" id="riepil"></span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="download.html">
-                                <i class="bi bi-file-earmark-text"></i> Download
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#sidebar-integrations" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebar-integrations">
-                                <i class="bi bi-terminal"></i> Invoicing
-                            </a>
-                            <div class="collapse" id="sidebar-integrations">
-                                <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item">
-                                        <a href="retail_handling.html" class="nav-link">
-                      Retail Handling
-                                        <span class="counter" id="retail_handling"></span>
-                    </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="domestic_linehaul.html" class="nav-link">
-                      Domestic Linehaul
-                                        <span class="counter" id="domestic_linehaul"></span>
-                    </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="giacenze_vs_lgi.html" class="nav-link">
-                      Giacenze vs LGI
-                                        <span class="counter" id="giacenze_vs_lgi"></span>
-                    </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="Wholesale%20Distribution.html" class="nav-link">
-                      Wholesale Distribution
-                                        <span class="counter" id="wholesale_distribution"></span>
-                    </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-
-                    <!-- Push content down -->
-                    <div class="mt-auto"></div>
-                    <!-- User menu -->
-                    <div class="my-4 px-lg-6 position-relative">
-                        <div class="dropup w-full">
-                            <button class="btn-primary d-flex w-full py-3 ps-3 pe-4 align-items-center shadow shadow-3-hover rounded-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <span class="me-3">
-                  <img id="user-profilee" alt="..." src="#"  class="avatar avatar-sm rounded-circle">
-                </span>
-                <span class="flex-fill text-start text-sm font-semibold" id="username">
-
-                </span>
-                <span>
-                  <i class="bi bi-chevron-expand text-white text-opacity-70"></i>
-                </span>
-              </button>
-                            <div class="dropdown-menu dropdown-menu-end w-full">
-                                <div class="dropdown-header">
-                                    <span class="d-block text-sm text-muted mb-1">Signed in as</span>
-                                    <span class="d-block text-heading font-semibold" id="username-"></span>
-                                </div>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">
-                                    <i class="bi bi-house me-3"></i>Home
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="bi bi-pencil me-3"></i>Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="bi bi-gear me-3"></i>Settings
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">
-                                    <i class="bi bi-box-arrow-left me-3"></i>Logout
-                                </a>
-                            </div>
-                        </div>
-                        <div class="d-flex gap-3 justify-content-center align-items-center mt-6 d-none">
-                            <div>
-                                <i class="bi bi-moon-stars me-2 text-warning me-2"></i>
-                                <span class="text-heading text-sm font-bold">Dark mode</span>
-                            </div>
-                            <div class="ms-auto">
-                                <div class="form-check form-switch me-n2">
-                                    <input class="form-check-input" type="checkbox" id="switch-dark-mode">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<body>
+    <script src="./res/js/menu.js"></script>
+    <my-menu></my-menu>
+    <div>
+        <div class="dataTables_scroll">
+            <div class="dataTables_scrollHead" id="infinite-list" style="overflow: hidden; position: relative; border: 0px; width: 100%; overflow-x:auto !important">
+                <div class="dataTables_scrollHeadInner" style="box-sizing: content-box; width: 1414.59375px; padding-right: 0px; height: 97.5vh;">
+                    <table class="table table-bordered table-hover mydatatable dataTable no-footer" style="width: 1414.59375px; margin-left: 0px;" role="grid">
+                        <thead id="headers">
+                            
+                        </thead>
+                        <tbody id="body">
+                            
+                        </tbody>
+                    </table>
                 </div>
             </div>
-        </nav>
-
-        <!-- Content -->
-        <div class="flex-lg-1 h-screen overflow-y-lg-auto">
-            <!-- Navbar -->
-            <nav class="navbar navbar-light position-lg-sticky top-lg-0 d-none d-lg-block overlap-10 flex-none bg-white border-bottom px-0 py-3" id="topbar">
-                <div class="container-fluid">
-                    <!-- Form -->
-                                            <div class="d-flex flex-column flex-md-row gap-3 justify-content-between">
-                            <div class="d-flex gap-3">
-                                <!-- Search -->
-
-                            </div>
-                    <button type="button" id="download-request" class="btn btn-sm px-3 btn-neutral d-flex align-items-center" onclick="downloadRequest(this)">Download Request</button>
-                        </div>
-
-
-                    <!-- Right menu -->
-                    <div class="navbar-user d-none d-sm-block">
-                        <div class="hstack gap-3 ms-4">
-                            <div class="dropdown">
-                                <a class="d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
-                                    <div>
-                                        <div class="avatar avatar-sm bg-warning rounded-circle text-white">
-                                            <img id="user-profileee" alt="..." src="#">
-                                        </div>
-                                    </div>
-                                    <div class="d-none d-sm-block ms-3">
-                                        <span class="h6" id="user"></span>
-                                    </div>
-                                    <div class="d-none d-md-block ms-md-2">
-                                        <i class="bi bi-chevron-down text-muted text-xs"></i>
-                                    </div>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <div class="dropdown-header">
-                                        <span class="d-block text-sm text-muted mb-1">Signed in as</span>
-                                        <span class="d-block text-heading font-semibold" id="user-"></span>
-                                    </div>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">
-                                        <i class="bi bi-house me-3"></i>Home
-                                    </a>
-                                    <a class="dropdown-item" href="#">
-                                        <i class="bi bi-pencil me-3"></i>Edit profile
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">
-                                        <i class="bi bi-gear me-3"></i>Settings
-                                    </a>
-                                    <a class="dropdown-item" href="#">
-                                        <i class="bi bi-image me-3"></i>Media
-                                    </a>
-                                    <a class="dropdown-item" href="#">
-                                        <i class="bi bi-box-arrow-up me-3"></i>Share
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">
-                                        <i class="bi bi-person me-3"></i>Login
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-            <!-- Navbar -->
-            <!-- Main -->
-            <main class="py-6 bg-surface-secondary">
-                <!-- Offcanvas -->
-                <div class="offcanvas offcanvas-end w-full w-lg-1/3" data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1" id="offcanvasCreate" aria-labelledby="offcanvasCreateLabel">
-                    <div class="offcanvas-header border-bottom py-5 bg-surface-secondary">
-                        <h5 class="offcanvas-title" id="offcanvasCreateLabel">Create a new project</h5>
-                        <button type="button" class="btn-close text-reset text-xs" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    <div class="offcanvas-body vstack gap-5">
-                        <div>
-                            <label class="form-label">Name</label>
-                            <input type="text" class="form-control" placeholder="Project name">
-                            <span class="d-block mt-2 text-sm text-muted">Make it unique.</span>
-                        </div>
-                        <div>
-                            <label class="form-label">Description</label>
-                            <textarea class="form-control" placeholder="Project description ..." rows="2"></textarea>
-                            <span class="d-block mt-2 text-sm text-muted">Make it unique.</span>
-                        </div>
-                        <hr class="my-0" />
-                        <div>
-                            <label class="form-label">Select view</label>
-                            <div class="hstack gap-3">
-                                <div class="form-item-checkable">
-                                    <input class="form-item-check" type="radio" name="project-view" id="project-view-kanban" checked>
-                                    <label class="form-item" for="project-view-kanban">
-                    <span class="form-item-click d-inline-flex align-items-center justify-content-center form-control w-24 h-24 text-center text-muted">
-                      <i class="bi bi-kanban" style="font-size: 2rem;"></i>
-                    </span>
-                  </label>
-                                </div>
-                                <div class="form-item-checkable">
-                                    <input class="form-item-check" type="radio" name="project-view" id="project-view-list">
-                                    <label class="form-item" for="project-view-list">
-                    <span class="form-item-click d-inline-flex align-items-center justify-content-center form-control w-24 h-24 text-center text-muted">
-                      <i class="bi bi-view-list" style="font-size: 2rem;"></i>
-                    </span>
-                  </label>
-                                </div>
-                                <div class="form-item-checkable">
-                                    <input class="form-item-check" type="radio" name="project-view" id="project-view-table">
-                                    <label class="form-item" for="project-view-table">
-                    <span class="form-item-click d-inline-flex align-items-center justify-content-center form-control w-24 h-24 text-center text-muted">
-                      <i class="bi bi-table" style="font-size: 2rem;"></i>
-                    </span>
-                  </label>
-                                </div>
-                            </div>
-                        </div>
-                        <hr class="my-0" />
-                        <div class="vstack gap-4">
-                            <div class="d-flex gap-3">
-                                <input class="form-check-input flex-shrink-0 text-lg" type="radio" name="projecy-privacy" checked>
-                                <div class="pt-1 form-checked-content">
-                                    <h6 class="mb-1 lh-relaxed">Private</h6>
-                                    <span class="d-block text-muted text-sm">
-                    <i class="bi bi-lock-fill me-1"></i>
-                    Only you will be able to see this project
-                  </span>
-                                </div>
-                            </div>
-                            <div class="d-flex gap-3">
-                                <input class="form-check-input flex-shrink-0 text-lg" type="radio" name="projecy-privacy">
-                                <div class="pt-1 form-checked-content">
-                                    <h6 class="mb-1 lh-relaxed">Make it public</h6>
-                                    <span class="d-block text-muted text-sm">
-                    <i class="bi bi-people-fill me-1"></i>
-                    Everyone in this workspace will be able to see this project
-                  </span>
-                                </div>
-                            </div>
-                        </div>
-                        <hr class="my-0" />
-                        <div class="row gx-4">
-                            <div class="col-md">
-                                <div>
-                                    <label class="form-label">Client</label>
-                                    <select class="form-select">
-                    <option>Webpixels</option>
-                    <option>Apple</option>
-                    <option>Elrond</option>
-                  </select>
-                                </div>
-                            </div>
-                            <div class="col-auto align-self-end">
-                                <span class="d-inline-block py-3 font-semibold text-muted">or</span>
-                            </div>
-                            <div class="col-md-auto align-self-end">
-                                <button type="button" class="btn btn-neutral">
-                  <i class="bi bi-plus-lg me-2"></i>New client
-                </button>
-                            </div>
-                        </div>
-                        <div class="row gx-4">
-                            <div class="col-md-6">
-                                <div>
-                                    <label class="form-label">Start date</label>
-                                    <div class="input-group input-group-inline datepicker">
-                                        <span class="input-group-text pe-2">
-                      <i class="bi bi-calendar"></i>
-                    </span>
-                                        <input type="text" class="form-control" placeholder="Select date" data-input>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div>
-                                    <label class="form-label">Due date</label>
-                                    <div class="input-group input-group-inline datepicker">
-                                        <span class="input-group-text pe-2">
-                      <i class="bi bi-calendar"></i>
-                    </span>
-                                        <input type="text" class="form-control" placeholder="Select date" data-input>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer py-2 bg-surface-secondary">
-                        <button type="button" class="btn btn-sm btn-neutral" data-bs-dismiss="offcanvas">Close</button>
-                        <button type="button" class="btn btn-sm btn-primary">Save</button>
-                    </div>
-                </div>
-                <!-- Modal -->
-                <div class="modal fade" id="modalExport" tabindex="-1" aria-labelledby="modalExport" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content shadow-3">
-                            <div class="modal-header">
-                                <div class="icon icon-shape rounded-3 bg-soft-primary text-primary text-lg me-4">
-                                    <i class="bi bi-globe"></i>
-                                </div>
-                                <div>
-                                    <h5 class="mb-1">Share to web</h5>
-                                    <small class="d-block text-xs text-muted">Publish and share link with anyone</small>
-                                </div>
-                                <div class="ms-auto">
-                                    <div class="form-check form-switch me-n2">
-                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
-                                        <label class="form-check-label" for="flexSwitchCheckChecked"></label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-body">
-                                <!-- Text -->
-                                <div class="d-flex align-items-center mb-5">
-                                    <div>
-                                        <p class="text-sm">
-                                            Anyone with this link <span class="font-bold text-heading">can view</span>
-                                        </p>
-                                    </div>
-                                    <div class="ms-auto">
-                                        <a href="#" class="text-sm font-semibold">Settings</a>
-                                    </div>
-                                </div>
-                                <!-- Form group -->
-                                <div>
-                                    <div class="input-group input-group-inline">
-                                        <input type="email" class="form-control" placeholder="username" value="https://webpixels.io/your-amazing-link">
-                                        <span class="input-group-text">
-                      <i class="bi bi-clipboard"></i>
-                    </span>
-                                    </div>
-                                    <span class="mt-2 valid-feedback">Looks good!</span>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <div class="me-auto">
-                                    <a href="#" class="text-sm font-semibold"><i class="bi bi-clipboard me-2"></i>Copy link</a>
-                                </div>
-                                <button type="button" class="btn btn-sm btn-neutral" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-sm btn-success">Share file</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Container -->
-                <div class="container-fluid">
-                    <div class="vstack gap-4">
-                        <!-- Table -->
-                        <div class="card">
-                            <div class="table-responsive">
-            <div class="dataTables_scrollHead" id="infinite-list" style="overflow: hidden; position: relative; border: 0px; width: 100%; overflow-x:auto !important">
-                                            <div class="dataTables_scrollHeadInner" style="box-sizing: content-box; width: 1414.59375px; padding-right: 0px;">
-                                <table class="table table-hover table-nowrap">
-                                    <thead class="table-light" id="headers">
-
-                                    </thead>
-                                    <tbody id="body">
-
-                                    </tbody>
-                                </table>
-                                                <span id="end-marker"></span>
-                                            </div>
-                                        </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </main>
         </div>
     </div>
-
-</body>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js">
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <span id="end-marker"></span>
     <script src="./res/js/riepilogo.js"></script>
     <script src="./res/js/hamburger.js"></script>
-
-    <script>
-        $(document).ready(function(){
-            $('#loadNavbar').load('menu.html');
-        });
-        const menuItems = document.querySelectorAll('.menu div');
-        const currentPage = getCurrentPage();
-        console.log(currentPage)
-        menuItems.forEach(item => {
-            if (item.id === currentPage) {
-                item.classList.add('selected');
-            }
-        });
-
-        function getCurrentPage() {
-            const path = window.location.pathname;
-            const currentPage = path.substring(path.lastIndexOf('/') + 1);
-            return currentPage.split('.')[0];
-        }
-</script>
-
+</body>
 </html>

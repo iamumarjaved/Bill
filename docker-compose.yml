@@ -8,7 +8,7 @@ services:
       args:
         - DEV=true
     ports:
-      - "80:8000"
+      - "8000:8000"
     volumes:
      - ./app:/app
     command: >
@@ -24,7 +24,6 @@ services:
     command: celery --app=app worker --loglevel=info --beat
     volumes:
       - ./app:/app
-      - E:/invoices:/invoices
     depends_on:
       - redis
     env_file:

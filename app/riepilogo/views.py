@@ -1,7 +1,8 @@
-from rest_framework import viewsets,mixins
+from rest_framework import viewsets,mixins,status
+from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication
-from riepilogo.serializers import RiepilogoSerializerAPI,RiepilogoSerializerPatch
+from riepilogo.serializers import RiepilogoSerializerAPI,RiepilogoSerializerPatch,ReipilogoSerializerID
 from core.models import Riepilogo
 from core.pagination import CustomPagination
 from drf_spectacular.utils import extend_schema
@@ -16,11 +17,13 @@ class RiepilogoViewSet(viewsets.GenericViewSet,
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
     pagination_class = CustomPagination
-    queryset = Riepilogo.objects.all().order_by('id')
+    queryset = Riepilogo.objects.all().order_by('-requested_pick_up')
 
     def get_serializer_class(self):
         if(self.action == "partial_update"):
             return RiepilogoSerializerPatch
+        elif(self.action == "get_id"):
+            return ReipilogoSerializerID
         return self.serializer_class
     
     def get_queryset(self):
@@ -43,4 +46,22 @@ class RiepilogoViewSet(viewsets.GenericViewSet,
     )
     def list(self, request, *args, **kwargs):
         return super().list(request, *args, **kwargs)
-      
+    
+    @extend_schema(
+        parameters=[
+            OpenApiParameter(name='ids',location=OpenApiParameter.QUERY, description='Comma Separated ID\'s', required=False, type=str),
+        ]
+    )
+    def get_id(self,request,*args,**kwargs):
+        ids = (self.request.query_params['ids'].split(","))
+        data = {
+            "id":ids
+        }
+        serializer = self.get_serializer(data=data)
+        if(serializer.is_valid()):
+            id_list = serializer.validated_data.get('id', [])
+            matching_records = Riepilogo.objects.filter(id__in=id_list)
+            matching_ids = matching_records.values('gps_id','id')
+            return Response({'matching_ids': matching_ids})
+        else:
+            return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)

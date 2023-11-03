@@ -52,26 +52,6 @@ function download() {
           }
         }
     });
-        $.ajax({
-        type: 'GET',
-        url: '/api/historic/CurrentUserView/',  // Your API endpoint
-        headers:{
-            'Authorization' : 'Bearer '+getToken()
-        },
-                async: true,
-        dataType: 'json',
-        success: function(response) {
-            console.log(response);
-            console.log(response.name);
-            $('#username, #username-, #user, #user-').text(response.name);
-            $('#user-profile, #user-profilee, #user-profileee').attr('src', response.profile_image);
-
-
-        },
-        error: function(error) {
-            console.log('Error:', error);
-        }
-    });
 }
 
 function list(){

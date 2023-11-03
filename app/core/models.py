@@ -34,7 +34,6 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     email = models.EmailField(max_length=255, unique=True)
     name = models.CharField(max_length=255)
-    profile_image = models.ImageField(upload_to='profile_images/', default='static/images/default.jpg')
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
@@ -243,6 +242,7 @@ class DownloadRequest(models.Model):
 class Riepilogo(models.Model):
     """Model for Riepilogo Partenze."""
     id = models.CharField(max_length=20,primary_key=True)
+    gps_id = models.IntegerField()
     week = models.PositiveSmallIntegerField()
     month = models.PositiveSmallIntegerField()
     magazzino_di_carico = models.CharField(max_length=20,default=None,null=True)
@@ -253,6 +253,7 @@ class Riepilogo(models.Model):
     lgl_warehouse_cut_off = models.TimeField(default=None,null=True)
     departure_type = models.CharField(max_length=20,default=None,null=True)
     country = models.CharField(max_length=20,default=None,null=True)
+    id_route = models.CharField(max_length=20)
     plate_nr = models.CharField(max_length=20,default=None,null=True)
     truck_supplier = models.CharField(max_length=25,default=None,null=True)
     truck_type = models.CharField(max_length=15,default=None,null=True)
@@ -284,14 +285,23 @@ class Riepilogo(models.Model):
     saturazione = models.FloatField(default=None,null=True)
     ticket = models.CharField(max_length=20,default=None,null=True)
     # id_concarico = models.CharField(max_length=20,default=None,null=True)
-    id_revenues = models.CharField(max_length=20,default=None,null=True)
+    id_revenues = models.CharField(max_length=35,default=None,null=True)
     revenues = models.DecimalField(null=True,default=None,max_digits=10, decimal_places=2)
     revenues_dedicati = models.DecimalField(null=True,default=None,max_digits=10, decimal_places=2)
-    co_departure = models.CharField(max_length=20,null=True,default=None)
-    co_costum = models.CharField(max_length=20,null=True,default=None)
-    co_parking = models.CharField(max_length=20,null=True,default=None)
-    co_destination = models.CharField(max_length=20,null=True,default=None)
+    co_departure = models.CharField(max_length=25,null=True,default=None)
+    co_costum = models.CharField(max_length=25,null=True,default=None)
+    co_parking = models.CharField(max_length=25,null=True,default=None)
+    co_destination = models.CharField(max_length=25,null=True,default=None)
     routing_rule_trecate = models.CharField(max_length=15,null=True,default=None)
+
+    def save(self, *args, **kwargs):
+        if not self.gps_id:
+            max_gps_id = Riepilogo.objects.aggregate(models.Max('gps_id'))['gps_id__max']
+            if max_gps_id is not None:
+                self.gps_id = max_gps_id + 1
+            else:
+                self.gps_id = 1
+        super().save(*args, **kwargs)
 
 class RevenueMapper(models.Model):
     """Table for revenue mapping on riepilogo"""
@@ -356,11 +366,3 @@ class WHL_DISTRIBUTION_N(models.Model):
     class Meta:
         managed = True
 
-
-class COUNTER(models.Model):
-    """Model for COUNTER."""
-    counter = models.IntegerField(default=0)
-    category = models.CharField(max_length=50, default=None, null=True)
-
-    class Meta:
-        managed = True
